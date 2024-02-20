@@ -32,7 +32,6 @@
 				"b64-to-blob": "^1.2.19",
 				"base64topdf": "^1.1.8",
 				"bcrypt": "^5.1.0",
-				"bcryptjs": "^2.4.3",
 				"email-validator": "^2.0.4",
 				"formidable": "^3.5.1",
 				"formik": "^2.2.9",
