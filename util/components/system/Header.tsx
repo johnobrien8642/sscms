@@ -103,7 +103,7 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 							as='h2'
 							sx={{ ':hover': { cursor: 'pointer' } }}
 							fontWeight='600'
-							fontSize='min(5vw, 2rem)'
+							fontSize='min(4.2vw, 1.5rem)'
 						>
 							{process.env.NEXT_PUBLIC_SITE_HEADER}
 						</Text>
@@ -126,11 +126,12 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 								return <Box
 										key={obj._id}
 										mt='.2rem'
+										ml='1rem'
 									>
 										<Text
 											key={obj._id}
-											fontWeight={router.asPath === obj.folderHref ? '800' : '200'}
 											fontSize={router.asPath === obj.folderHref ? '1.8rem !important' : '1.5rem'}
+											whiteSpace='nowrap'
 											sx={{
 												'a:hover': {
 													color: 'lightgray'
