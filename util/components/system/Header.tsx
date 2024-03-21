@@ -130,7 +130,7 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 									>
 										<Text
 											key={obj._id}
-											fontSize={router.asPath === obj.folderHref ? '1.8rem !important' : '1.5rem'}
+											fontSize={router.asPath === obj.folderHref ? '1.3rem !important' : '1.2rem'}
 											whiteSpace='nowrap'
 											sx={{
 												'a:hover': {
