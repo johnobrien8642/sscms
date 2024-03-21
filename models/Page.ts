@@ -10,6 +10,9 @@ const optionsObj: { [key: string]: OptionsType } = {
 	metaDescription: {
 		formTitle: 'Meta Description'
 	},
+	metaKeywords: {
+		formTitle: 'Meta Keywords'
+	},
 	meta: {
 		collapseTitle: 'Meta Info'
 	},
@@ -57,6 +60,10 @@ const MetaDropdownSchema = new Schema({
 	metaDescription: {
 		type: String,
 		...optionsObj.metaDescription
+	},
+	metaKeywords: {
+		type: String,
+		...optionsObj.metaKeywords
 	}
 })
 

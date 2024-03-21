@@ -21,10 +21,14 @@ const Home: NextPage<SlugPropsType> = ({ pageManager, page }) => {
 		return (
 			<>
 				<Head>
-					<title>{pPage?.meta?.metaTitle}</title>
+					<title>{pPage?.meta?.metaTitle || pPage?.title}</title>
 					<meta
 						name="description"
-						content={pPage?.meta?.metaDescription as string}
+						content={pPage?.meta?.metaDescription as string || pPage?.description as string}
+					/>
+					<meta
+						name="keywords"
+						content={pPage?.meta?.metaKeywords as string}
 					/>
 					<link rel="canonical" href='' />
 					<link rel="icon" type="image/icon" href="/icons8-book-ios-16-16.png" />
