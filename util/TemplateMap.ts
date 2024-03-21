@@ -7,6 +7,8 @@ import TextBlock from "./components/templates/TextBlock";
 import PDFView from "./components/templates/PDFView";
 import PDFList from "./components/templates/PDFList";
 import PatronProdList from "./components/templates/PatronProdList";
+import BookCoverCTA from "./components/templates/BookCoverCTA";
+import About from "./components/templates/About";
 
 const TemplateMap: { [key in TemplatesEnum]: any } = {
 	'PhotoList': PhotoList,
@@ -15,7 +17,9 @@ const TemplateMap: { [key in TemplatesEnum]: any } = {
 	'HeadlineOnlyCTA': HeadlineOnlyCTA,
 	'PDFList': PDFList,
 	'PDFView': PDFView,
-	'PatronProdList': PatronProdList
+	'PatronProdList': PatronProdList,
+	'BookCoverCTA': BookCoverCTA,
+	'About': About,
 }
 
 export default TemplateMap;
