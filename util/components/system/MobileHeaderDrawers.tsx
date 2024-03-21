@@ -46,7 +46,7 @@ const MobileHeaderDrawers = ({
 								router.push('/');
 								onClose();
 							}}
-							fontSize='5vw'
+							fontSize='4vw'
 							fontWeight='600'
 						>
 							<Text>

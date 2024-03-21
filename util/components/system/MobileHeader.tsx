@@ -41,7 +41,7 @@ const MobileHeader = ({ pages }: { pages: PageType[] }) => {
 					{pages.map((obj, i) => (
 						<Text
 							key={obj._id}
-							fontSize='1.5rem'
+							fontSize='1.3rem'
 							sx={{
 								':focus': {
 									color: 'white !important'
