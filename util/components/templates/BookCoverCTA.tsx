@@ -59,7 +59,7 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 								backgroundColor: '#535353'
 							}
 						}}
-						padding='2rema'
+						padding='2rem'
 						fontSize='1.5rem'
 					>
 						Buy the book
