@@ -17,6 +17,7 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 		flexDir='column'
 		width='90%'
 		m='auto'
+		mb='8rem'
 	>
 		<Heading
 			py='2rem'
@@ -33,8 +34,14 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 		<Grid
 			gridTemplateColumns={{ base: '1fr', lg: '1fr 1fr'}}
 			gap={10}
+			justifyItems='center'
+			alignItems='center'
+			w='80%'
+			m='auto'
 		>
-			<Box>
+			<Box
+				w='80%'
+			>
 				<Image
 					width={asset.assetDimensions[0]}
 					height={asset.assetDimensions[1]}
@@ -43,7 +50,7 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 				/>
 			</Box>
 			<Box>
-				<Heading mb='2rem'>{asset.description}</Heading>
+				<Heading fontSize='3.2rem' mb='2rem'>{asset.description}</Heading>
 				<Link href={asset.extLink ?? ''} passHref={true}>
 					<Button
 						variant='outline'
@@ -52,6 +59,8 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 								backgroundColor: '#535353'
 							}
 						}}
+						padding='2rema'
+						fontSize='1.5rem'
 					>
 						Buy the book
 					</Button>
@@ -60,6 +69,8 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 					as='span'
 					display='inline-block'
 					mt='2rem'
+					lineHeight='2rem'
+					fontSize='1.2rem'
 					dangerouslySetInnerHTML={{ __html: asset.richDescription ?? '' }}
 				/>
 			</Box>
