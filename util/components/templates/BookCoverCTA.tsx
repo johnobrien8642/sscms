@@ -39,9 +39,7 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 			w='80%'
 			m='auto'
 		>
-			<Box
-				w='80%'
-			>
+			<Box>
 				<Image
 					width={asset.assetDimensions[0]}
 					height={asset.assetDimensions[1]}
