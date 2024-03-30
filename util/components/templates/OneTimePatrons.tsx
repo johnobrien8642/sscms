@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { BasePropsType } from '../types/prop_types';
 
-const OneTimePatrons = ({ template }) => {
+const OneTimePatrons = ({ template }: BasePropsType) => {
 	const [sales, setSales] = useState(null);
 	useEffect(() => {
 		fetchSales()
