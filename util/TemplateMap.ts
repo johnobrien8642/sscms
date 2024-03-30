@@ -9,6 +9,7 @@ import PDFList from "./components/templates/PDFList";
 import PatronProdList from "./components/templates/PatronProdList";
 import BookCoverCTA from "./components/templates/BookCoverCTA";
 import About from "./components/templates/About";
+import OneTimePatrons from "./components/templates/OneTimePatrons";
 
 const TemplateMap: { [key in TemplatesEnum]: any } = {
 	'PhotoList': PhotoList,
@@ -20,6 +21,7 @@ const TemplateMap: { [key in TemplatesEnum]: any } = {
 	'PatronProdList': PatronProdList,
 	'BookCoverCTA': BookCoverCTA,
 	'About': About,
+	'OneTimePatrons': OneTimePatrons
 }
 
 export default TemplateMap;

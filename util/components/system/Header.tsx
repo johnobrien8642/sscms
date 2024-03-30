@@ -68,6 +68,7 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 							sx={{ ':hover': { cursor: 'pointer' } }}
 							fontWeight='600'
 							fontSize='min(5vw, 2rem)'
+							whiteSpace='pre-wrap'
 						>
 							{process.env.NEXT_PUBLIC_SITE_HEADER}
 						</Text>
