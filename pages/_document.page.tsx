@@ -11,8 +11,8 @@ class CustomDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
+					<Analytics />
 				</body>
-				<Analytics />
 				<SpeedInsights />
 			</Html>
 		);
