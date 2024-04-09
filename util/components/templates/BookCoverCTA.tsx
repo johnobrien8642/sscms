@@ -32,7 +32,7 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 			{asset.title?.toUpperCase()}
 		</Heading>
 		<Grid
-			gridTemplateColumns={{ base: '1fr', lg: '1fr 1fr'}}
+			gridTemplateColumns={{ base: '1fr', md: '1fr 1fr'}}
 			gap={10}
 			justifyItems='center'
 			alignItems='center'
