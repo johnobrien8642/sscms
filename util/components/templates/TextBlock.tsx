@@ -7,8 +7,9 @@ const TextBlock = ({ template }: BasePropsType) => {
 		<Box
 			width={{ base: '90%', md: '75%' }}
 			m='auto'
+			mt={{ base: '2rem', md: '5rem' }}
 			mb={{ base: '2rem', md: '5rem' }}
-			fontSize='1.2rem'
+			fontSize='min(5vw, 2rem)'
 		>
 			{
 				template.assetsIds.map(obj => {
