@@ -36,7 +36,7 @@ const BookCoverCTA = ({ template }: BasePropsType) => {
 			gap={10}
 			justifyItems='center'
 			alignItems='center'
-			w='80%'
+			w={{ base: '80%', md: '75%', lg: '65%' }}
 			m='auto'
 		>
 			<Box>
