@@ -14,7 +14,8 @@ export enum TemplatesEnum {
 	PatronProdList = 'PatronProdList',
 	About = 'About',
 	BookCoverCTA = 'BookCoverCTA',
-	OneTimePatrons = 'OneTimePatrons'
+	OneTimePatrons = 'OneTimePatrons',
+	Embed = 'Embed'
 }
 
 export enum AssetsEnum {
