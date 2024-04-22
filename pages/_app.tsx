@@ -31,8 +31,8 @@ const MyApp: AppType<{ admin: boolean; }> = ({ Component, pageProps }) => {
 						_light: process.env.NEXT_PUBLIC_BG_COLOR
 					},
 					'chakra-body-text': {
-						_dark: process.env.NEXT_PUBLIC_BG_COLOR === 'black' ? 'white' : 'black',
-						_light: process.env.NEXT_PUBLIC_BG_COLOR === 'black' ? 'white' : 'black'
+						_dark: process.env.NEXT_PUBLIC_BG_COLOR === '#2b2b2b' ? 'white' : 'black',
+						_light: process.env.NEXT_PUBLIC_BG_COLOR === '#2b2b2b' ? 'white' : 'black'
 					}
 				}
 			}
