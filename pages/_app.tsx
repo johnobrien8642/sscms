@@ -6,6 +6,7 @@ import { extendTheme } from '@chakra-ui/react';
 import { IBM_Plex_Serif } from 'next/font/google'
 const inter = IBM_Plex_Serif({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
 import React, { useEffect } from 'react';
+import { Analytics } from "@vercel/analytics/react";
 
 const MyApp: AppType<{ admin: boolean; }> = ({ Component, pageProps }) => {
 	let themeObj = {};
@@ -52,6 +53,7 @@ const MyApp: AppType<{ admin: boolean; }> = ({ Component, pageProps }) => {
 				<main className={inter.className} style={{ overflow: 'auto' }}>
 					<Component {...pageProps} />
 				</main>
+				<Analytics />
 			</DndProvider>
 		</ChakraProvider>
 	)
