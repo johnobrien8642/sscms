@@ -31,7 +31,7 @@ const Home: NextPage<SlugPropsType> = ({ pageManager, page }) => {
 						content={pPage?.meta?.metaKeywords as string}
 					/>
 					<link rel="canonical" href='' />
-					<link rel="icon" type="image/icon" href="/icons8-book-ios-16-16.png" />
+					<link rel="icon" type="image/icon" href="/hlp-logo-graphic-only.jpg" />
 				</Head>
 				<Header
 					pages={pPageManager.pageIds}

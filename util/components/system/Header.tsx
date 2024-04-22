@@ -63,6 +63,11 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 							router.push('/');
 						}}
 					>
+						<Box
+							width='50px'
+						>
+							<img src='/hlp-logo-graphic-only.jpg' />
+						</Box>
 						<Text
 							as='h2'
 							sx={{ ':hover': { cursor: 'pointer' } }}
@@ -100,6 +105,12 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 							router.push('/');
 						}}
 					>
+						<Box
+							width='50px'
+							mr='1rem'
+						>
+							<img src='/hlp-logo-graphic-only.jpg' />
+						</Box>
 						<Text
 							as='h2'
 							sx={{ ':hover': { cursor: 'pointer' } }}
