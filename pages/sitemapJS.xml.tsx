@@ -1,19 +1,18 @@
 import connectDb from '../lib/mongodb';
-import PageManager, { PageManagerType } from '../models/PageManager';
 import { NextApiResponse } from 'next';
-import { PageType } from '../models/Page';
+import Page, { PageType } from '../models/Page';
 
-function generateSiteMap(data: { pageIds: PageType[] }) {
+function generateSiteMap(data: PageType[]) {
 	return `<?xml version="1.0" encoding="UTF-8"?>
 	<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 		<url>
-			<loc>https://www.johneobrien.com</loc>
+			<loc>https://www.houselorenzpress.com</loc>
 		</url>
-		${data.pageIds
+		${data
 			.map((page) => {
 				 return `
 					<url>
-						<loc>${`https://www.johneobrien.com${page.folderHref}`}</loc>
+						<loc>${`https://www.houselorenzpress.com${page.folderHref}`}</loc>
 					</url>
 				`;
 			})
@@ -29,10 +28,10 @@ function SiteMap() {
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	await connectDb();
 	// We make an API call to gather the URLs for our site
-	const data = await PageManager.find({}).populate('pageIds');
+	const data = await Page.find({});
 
 	// We generate the XML sitemap with the posts data
-	const sitemap = generateSiteMap(data[0] as PageManagerType);
+	const sitemap = generateSiteMap(data as PageType[]);
 
 	res.setHeader('Content-Type', 'text/xml');
 	// we send the XML to the browser
