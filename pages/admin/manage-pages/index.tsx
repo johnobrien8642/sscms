@@ -44,7 +44,8 @@ const ManagePages: NextPage<{}> = () => {
 				headers: {
 					Accept: 'application/json',
 					'Content-Type': 'application/json'
-				}
+				},
+				cache: 'no-store'
 			})
 			const data = await res.json();
 			const { pageManager } = data;
@@ -65,7 +66,8 @@ const ManagePages: NextPage<{}> = () => {
 				},
 				body: JSON.stringify({
 					pageIdArr: items.map(obj => obj._id)
-				})
+				}),
+				cache: 'no-store'
 			})
 		}
 	}, [items]);

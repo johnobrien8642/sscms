@@ -32,7 +32,7 @@ const Form = ({}) => {
 		handleModelSchema();
 		async function handleModelSchema() {
 			if (!formCache.active) return;
-			const res = await fetch(`/api/get_model_schema?formTitle=${formTitle}`);
+			const res = await fetch(`/api/get_model_schema?formTitle=${formTitle}`, { cache: 'no-store' });
 			const data = await res.json();
 			const { schemaPaths } = data;
 			setFieldArr(Object.entries(schemaPaths))
@@ -82,7 +82,8 @@ const Form = ({}) => {
 										},
 										body: JSON.stringify({
 											keysToDelete: [data[formTitle][fieldTitle]]
-										})
+										}),
+										cache: 'no-store'
 									});
 									if (!res.ok) {
 										const data = await res.json();
@@ -100,7 +101,8 @@ const Form = ({}) => {
 									body: JSON.stringify({
 										name: file.name,
 										type: file.type
-									})
+									}),
+									cache: 'no-store'
 								});
 								const data1 = await res.json()
 								const { url, key } = data1;
@@ -133,7 +135,8 @@ const Form = ({}) => {
 								...data[formTitle]
 							},
 							folderHref: data[formTitle]?.folderHref
-						})
+						}),
+						cache: 'no-store'
 					});
 
 					if (res2.ok) {

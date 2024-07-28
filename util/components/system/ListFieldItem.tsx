@@ -318,7 +318,8 @@ const ListFieldItem = ({
 									body: JSON.stringify({
 										item: itemRef,
 										schema: item.schemaName
-									})
+									}),
+									cache: 'no-store'
 								})
 								const data2 = await res3.json();
 								const { savedNewItem } = data2;
@@ -402,7 +403,7 @@ const ListFieldItem = ({
 													newData.loading = true;
 													return newData;
 												});
-												const res = await fetch(`/api/get_model_schema?formTitle=${item.schemaName}`);
+												const res = await fetch(`/api/get_model_schema?formTitle=${item.schemaName}`, { cache: 'no-store' });
 												const data = await res.json();
 												const { schemaPaths } = data;
 												const entries = Object.entries(schemaPaths);
@@ -429,7 +430,8 @@ const ListFieldItem = ({
 														formTitle,
 														title,
 														keysToDelete
-													})
+													}),
+													cache: 'no-store'
 												});
 												if (res3.ok) {
 													setFormSelected(prev => {

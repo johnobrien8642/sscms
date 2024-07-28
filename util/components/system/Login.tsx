@@ -29,7 +29,7 @@ const Login = () => {
 	useEffect(() => {
 		handleCheckFirstTime();
 		async function handleCheckFirstTime() {
-			const res = await fetch(`/api/check_admin_exists`);
+			const res = await fetch(`/api/check_admin_exists`, { cache: 'no-store' });
 			const data = await res.json();
 			const { admin } = data;
 			setFirstTimeUser(!admin);
@@ -60,7 +60,8 @@ const Login = () => {
 							body: JSON.stringify({
 								username: username,
 								password: password,
-							})
+							}),
+							cache: 'no-store'
 						});
 						if (res.ok) {
 							const { data: { admin, token }, error } = await res.json();

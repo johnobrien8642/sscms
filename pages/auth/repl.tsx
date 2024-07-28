@@ -120,7 +120,8 @@ const ReplWindow: NextPage<ReplWindowPropType> = ({ editorTheme, adminId }) => {
 									headers: {
 										Accept: 'application/json',
 										'Content-Type': 'application/json'
-									}
+									},
+									cache: 'no-store'
 								})
 								if (res.ok) {
 									const { finalResult } = await res.json()
@@ -149,7 +150,8 @@ const ReplWindow: NextPage<ReplWindowPropType> = ({ editorTheme, adminId }) => {
 												body: JSON.stringify({
 													editorTheme: e.target.value,
 													adminId
-												})
+												}),
+												cache: 'no-store'
 											});
 											if (!res.ok) {
 												const { errorMessage } = await res.json();

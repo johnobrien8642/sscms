@@ -70,7 +70,7 @@ const ListField = ({
 				paramsObj['itemType'] = itemFilter;
 			}
 			const params = new URLSearchParams(paramsObj);
-			const res = await fetch(`/api/get_list_field_items?${params}`);
+			const res = await fetch(`/api/get_list_field_items?${params}`, { cache: 'no-store' });
 			const resData = await res.json();
 			const { availableItems, chosenItems } = resData;
 			setAvailableItems(availableItems);
