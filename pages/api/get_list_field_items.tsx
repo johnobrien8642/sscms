@@ -17,8 +17,15 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	if (itemType) {
 		availableItemsFilter.type = itemType;
 	}
-	const availableItems = await models[schema as string].find(availableItemsFilter)
-	const chosenItems = await models[schema as string].find({ _id: { $in: nestedItemIdsArr } })
+	let availableItems;
+	let chosenItems;
+	try {
+		availableItems = await models[schema as string].find(availableItemsFilter)
+		chosenItems = await models[schema as string].find({ _id: { $in: nestedItemIdsArr } })
+	} catch (err: any) {
+		res.status(500).json({ Error: err.message });
+		return;
+	}
 	if (availableItems && chosenItems) {
 		const orderedChosenItems = new Array(chosenItems.length);
 		let item;
