@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import connectDb from '../../lib/mongodb.js';
 import models from '../../lib/index';
 export const config = {
 	api: {
@@ -9,6 +10,7 @@ export const config = {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+	await connectDb();
 	const { schema, nestedItemIds, itemType } = req.query;
 	const nestedItemIdsArr = nestedItemIds ? (nestedItemIds as string).split(',') : [];
 	let availableItemsFilter: any = {
@@ -17,15 +19,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	if (itemType) {
 		availableItemsFilter.type = itemType;
 	}
-	let availableItems;
-	let chosenItems;
-	try {
-		availableItems = await models[schema as string].find(availableItemsFilter)
-		chosenItems = await models[schema as string].find({ _id: { $in: nestedItemIdsArr } })
-	} catch (err: any) {
-		res.status(500).json({ Error: err.message });
-		return;
-	}
+	const availableItems = await models[schema as string].find(availableItemsFilter)
+	const chosenItems = await models[schema as string].find({ _id: { $in: nestedItemIdsArr } })
 	if (availableItems && chosenItems) {
 		const orderedChosenItems = new Array(chosenItems.length);
 		let item;

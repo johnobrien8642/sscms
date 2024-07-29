@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import models from '../../lib/index';
 import aws from 'aws-sdk'
+import connectDb from '../../lib/mongodb.js';
 export const config = {
 	api: {
 		bodyParser: {
@@ -10,6 +11,7 @@ export const config = {
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
+	await connectDb();
 	const { item, formTitle, title, keysToDelete } = req.body;
 	if (item.schemaName === 'Assets') {
 		let filter: { $or: { [key: string]: string }[] } = { $or: [] }
