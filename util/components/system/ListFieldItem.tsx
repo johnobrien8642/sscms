@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState, useMemo, useCallback } from 'react';
+import React, { SetStateAction, useState } from 'react';
 import Image from 'next/image';
 import {
 	Text,
@@ -17,15 +17,14 @@ import {
 	Spinner
 } from '@chakra-ui/react';
 import { truncate } from 'lodash';
-import { FormSelectedType, useManagePageForm } from '../../contexts/useManagePageForm';
+import { useManagePageForm } from '../../contexts/useManagePageForm';
 import { EditIcon, AddIcon, MinusIcon, RepeatIcon, DeleteIcon } from '@chakra-ui/icons';
 import { remove, cloneDeep } from 'lodash';
 import { useDrag, useDrop } from 'react-dnd';
 // @ts-expect-error there's no types for lodash-move it's old af
 import move from 'lodash-move';
-import { AllDocUnionType, AllDocType, AllDocArrayType, AllDocIntersectionType, AllDocUnionTypeDyn } from '../types/util_types';
-import { OptionsType, allowCrudObj } from '../../../models/model-types';
-import { SchemaNameOptionsType, schemaNameOptionsEnumArr } from '../../../models/model-types';
+import { AllDocUnionType, AllDocType, AllDocArrayType } from '../types/util_types';
+import { OptionsType } from '../../../models/model-types';
 
 const ListFieldItem = ({
 	item,
@@ -53,7 +52,6 @@ const ListFieldItem = ({
 	const formTitle = formCache[formCache.active]?.formTitle ?? '';
 	const [openModal, setOpenModal] = useState(false);
 	const [error, setError] = useState('');
-	item.typeName = item.schemaName as SchemaNameOptionsType;
 	const styleProps = {
 		as: 'span',
 		mx: '1rem',

@@ -41,21 +41,13 @@ export type SubdocumentType = {
 export const templatesEnumValueArr = Object.values(TemplatesEnum);
 export const assetsEnumValueArr = Object.values(AssetsEnum);
 export const textAlignOptionsEnumValueArr = Object.values(TextAlignOptionsEnum);
-export const schemaNameOptionsEnumArr = ['Page', 'Templates', 'Assets'];
-// Enforces Page -> Templates -> Assets CRUD operations for non-nested objects, i.e. if Templates
-// has Pages subdocs, you can't CRUD Pages from a Template, you have to CRUD the Page from the actual Page
-export const allowCrudObj: { [key: string]: { [key: string]: 1 } } = { 'Page': { 'Page': 1, 'Templates': 1, 'Assets': 1 }, 'Templates': { 'Assets': 1 }, 'Assets': {} }
-export type SchemaNameOptionsType = 'Page' | 'Templates' | 'Assets';
 
 export type OptionsType = {
 	// Can be multiple different kinds as per mongoose, handled by Typegoose ultimately
 	required?: boolean;
 	default?: boolean | string | number | Date;
 	index?: boolean;
-	enum?: typeof templatesEnumValueArr |
-		typeof assetsEnumValueArr |
-		typeof textAlignOptionsEnumValueArr |
-		typeof schemaNameOptionsEnumArr;
+	enum?: string[];
 	// For accessing enum array from object (deprecated)
 	enumKey?: string;
 	// Default value for the select input

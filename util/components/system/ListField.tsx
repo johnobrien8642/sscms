@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { dataInitialValue, useManagePageForm } from '../../contexts/useManagePageForm';
 import { assetsEnumValueArr, templatesEnumValueArr } from '../../../models/model-types';
-import { OptionsType, allowCrudObj } from '../../../models/model-types';
+import { OptionsType } from '../../../models/model-types';
 import { AllDocUnionType } from '../types/util_types';
 import { cloneDeep } from 'lodash';
 import mongoose from 'mongoose';
