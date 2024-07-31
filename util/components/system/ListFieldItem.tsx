@@ -58,6 +58,8 @@ const ListFieldItem = ({
 		textAlign: 'center',
 		fontSize: '.9rem'
 	}
+	//@ts-ignore 
+	item.typeName = item.schemaName;
 	const [{ isOver }, drop] = useDrop(() => ({
 		accept: 'ListFieldItem',
 		drop: (item: { index: number; } & AllDocType) => {
