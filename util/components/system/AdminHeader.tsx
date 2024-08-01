@@ -6,9 +6,9 @@ import {
 	Text,
 	Box,
 	Button,
-	useBreakpointValue
+	useBreakpointValue,
+	Link
 } from '@chakra-ui/react';
-import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Logout from './Logout';
 
@@ -39,7 +39,7 @@ const AdminHeader = ({ selected }: { selected: string; }) => {
 			>
 				{
 					pages.map(page => {
-						return <Button
+						return <Link
 							key={page}
 							variant='link'
 							mr={desktop ? '2rem' : '0'}
@@ -49,10 +49,7 @@ const AdminHeader = ({ selected }: { selected: string; }) => {
 									textDecoration: 'none'
 								}
 							}}
-							onClick={(e) => {
-								e.preventDefault();
-								router.push(`/admin/manage-${page.toLowerCase()}`);
-							}}
+							href={`/admin/manage-${page.toLowerCase()}`}
 						>
 							<Text
 								as='h2'
@@ -62,7 +59,7 @@ const AdminHeader = ({ selected }: { selected: string; }) => {
 							>
 								{`Manage ${page}`}
 							</Text>
-						</Button>
+						</Link>
 					})
 				}
 

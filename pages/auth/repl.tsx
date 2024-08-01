@@ -99,7 +99,7 @@ const ReplWindow: NextPage<ReplWindowPropType> = ({ editorTheme, adminId }) => {
 			<Head>
 				<script src="https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js"></script>
 			</Head>
-			<Heading fontSize='1.5rem' m='3rem' textDecoration={'underline'}><Link href={'/admin/manage-pages'}>Back to Manage Pages</Link></Heading>
+			<Heading fontSize='1.5rem' m='3rem' textDecoration={'underline'}><Link href={'/admin/manage-pages'}>Back</Link></Heading>
 			<Center
 				maxW='1200px'
 				m='0 auto'
