@@ -22,10 +22,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const {
 		data,
 		folderHref,
+		pageManagerKey
 		// update,
 		// itemToEditId,
 		// parentId
 	} = req.body
+	
 	let item;
 	let parentItem;
 	let itemExistsAlready;
@@ -56,8 +58,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			});
 			const savedItem = await item.save();
 			if (!parentItem && formTitleRef) {
+				const { pageManagerKey } = data;
 				pageManager = await PageManager.findOne({ title: 'manage-pages' });
-				await PageManager.findOneAndUpdate({ _id: pageManager._id }, { pageIds: [...pageManager.pageIds, savedItem._id] });
+				await PageManager.findOneAndUpdate({ _id: pageManager._id }, { [pageManagerKey]: [...pageManager[pageManagerKey], savedItem._id] });
 			}
 			return res.status(200).json({ success: true, _id: savedItem._id, parent: parentItem, parentFieldTitleRef, savedItem });
 		} catch (err: any) {

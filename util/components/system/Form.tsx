@@ -8,10 +8,10 @@ import {
 import FormFields from './FormFields';
 import { useManagePageForm, ManagePageFormDataType, dataInitialValue } from '../../contexts/useManagePageForm';
 import { OptionsType } from '../../../models/model-types';
-import { cloneDeep, kebabCase } from 'lodash';
+import { cloneDeep, kebabCase, set } from 'lodash';
 import axios from 'axios';
 
-const Form = ({}) => {
+const Form = ({ formType, pageManagerKey }: { formType: string; pageManagerKey: string; }) => {
 	const [fieldArr, setFieldArr] = useState<[string, any][]>([]);
 	const [parentDoc, setParentDoc] = useState<any | null>(null);
 	let [error, setError] = useState('');
@@ -56,8 +56,8 @@ const Form = ({}) => {
 						newData.loading = true;
 						return newData;
 					});
-					if (data[formTitle].formTitle === 'Page') {
-						data['Page'].folderHref = `/${kebabCase(data['Page'].title)}`;
+					if (formType === 'Page' || formType === 'BlogPost') {
+						set(data[formType], 'folderHref', `/${kebabCase(data[formType].title)}`);
 					} else if (data[formTitle].formTitle === 'Assets') {
 						let dataRef: ManagePageFormDataType = data[formTitle];
 						let fieldTitle: string;
@@ -132,13 +132,13 @@ const Form = ({}) => {
 						},
 						body: JSON.stringify({
 							data: {
-								...data[formTitle]
+								...data[formTitle],
+								pageManagerKey
 							},
 							folderHref: data[formTitle]?.folderHref
 						}),
 						cache: 'no-store'
 					});
-
 					if (res2.ok) {
 						const data = await res2.json()
 						const { parent, parentFieldTitleRef, savedItem } = data;
@@ -156,7 +156,11 @@ const Form = ({}) => {
 									const newData = cloneDeep(prev);
 									newData[previousFormTitle] = cloneDeep(newFormCacheData[activeItem.previous]);
 									if (parentFieldTitleRef && savedItem && !activeItem.update) {
-										newData[previousFormTitle][parentFieldTitleRef].push(savedItem._id);
+										if (newData[previousFormTitle][parentFieldTitleRef]) {
+											newData[previousFormTitle][parentFieldTitleRef].push(savedItem._id);
+										} else {
+											set(newData, `${previousFormTitle}.${parentFieldTitleRef}`, [savedItem._id]);
+										}
 									}
 									newFormCacheData.active = activeItem.previous;
 									delete newFormCacheData[activeItem._id];

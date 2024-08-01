@@ -7,15 +7,6 @@ const optionsObj: { [key: string]: OptionsType } = {
 	metaTitle: {
 		formTitle: 'Meta Title'
 	},
-	metaDescription: {
-		formTitle: 'Meta Description'
-	},
-	metaKeywords: {
-		formTitle: 'Meta Keywords'
-	},
-	meta: {
-		collapseTitle: 'Meta Info'
-	},
 	folderHref: {
 		required: true,
 		hide: true
@@ -24,23 +15,23 @@ const optionsObj: { [key: string]: OptionsType } = {
 		default: true,
 		formTitle: 'Show in Navigation'
 	},
-	description: {
-		textbox: true
-	},
-	childPagesIds: {
-		formTitle: 'Child Pages',
-		filterType: true
+	richDescription: {
+		richText: true,
+		formTitle: 'Rich Text'
 	},
 	templatesIds: {
 		formTitle: 'Templates',
 		filterType: true
 	},
 	schemaName: {
-		default: 'Page',
+		default: 'BlogPost',
 		hide: true,
 		internal: true,
 		required: true,
-		enum: ['Page']
+		enum: ['BlogPost']
+	},
+	meta: {
+		collapseTitle: 'Meta Info'
 	},
 	updatedAt: {
 		hide: true,
@@ -60,14 +51,10 @@ const MetaDropdownSchema = new Schema({
 	metaDescription: {
 		type: String,
 		...optionsObj.metaDescription
-	},
-	metaKeywords: {
-		type: String,
-		...optionsObj.metaKeywords
 	}
 })
 
-const PageSchema = new Schema({
+const BlogPostSchema = new Schema({
 	title: {
 		type: String,
 		validate: {
@@ -87,18 +74,9 @@ const PageSchema = new Schema({
 		type: Boolean,
 		...optionsObj.showInNavigation
 	},
-	description: {
+	richDescription: {
 		type: String,
 		...optionsObj.description
-	},
-	childPagesIds: {
-		type: [
-			{
-				type: mongoose.Schema.Types.ObjectId,
-				ref: 'Page'
-			}
-		],
-		...optionsObj.childPagesIds
 	},
 	templatesIds: {
 		type: [
@@ -109,13 +87,13 @@ const PageSchema = new Schema({
 		],
 		...optionsObj.templatesIds
 	},
-	meta: {
-		type: MetaDropdownSchema,
-		...optionsObj.meta
-	},
 	schemaName: {
 		type: String,
 		...optionsObj.schemaName
+	},
+	meta: {
+		type: MetaDropdownSchema,
+		...optionsObj.meta
 	},
 	updatedAt: {
 		type: Date,
@@ -129,30 +107,18 @@ const PageSchema = new Schema({
 	}
 });
 
-function autoPopulatePages(next: any) {
-	//@ts-expect-error
-	this.populate('childPagesIds');
-	next()
-}
-
-PageSchema
-	.pre('findOne', autoPopulatePages)
-	.pre('find', autoPopulatePages)
-
-
-
 export type MetaDropdownType = InferSchemaType<typeof MetaDropdownSchema>;
-export type PageSubDocsType = {
-	childPagesIds: PageType[];
+export type BlogPostSubDocsType = {
+	childPagesIds: BlogPostType[];
 	templatesIds: TemplatesType[];
 	meta: MetaDropdownType;
 }
-export type PageNoSubdocsType = Omit<InferSchemaType<typeof PageSchema>, 'templatesIds' | 'childPagesIds' | 'meta'>;
-// export type PageType = HydratedDocument<PageNoSubdocsType & PageSubDocsType>;
-export type PageType = PageNoSubdocsType & PageSubDocsType & { _id: string; typeName: 'Page' };
-export type HydratedPageType = HydratedDocument<PageType>;
+export type BlogPostNoSubdocsType = Omit<InferSchemaType<typeof BlogPostSchema>, 'templatesIds'>;
+// export type BlogPostType = HydratedDocument<BlogPostNoSubdocsType & BlogPostSubDocsType>;
+export type BlogPostType = BlogPostNoSubdocsType & BlogPostSubDocsType & { _id: string; typeName: 'BlogPost' };
+export type HydratedBlogPostType = HydratedDocument<BlogPostType>;
 
-const Page =
-	mongoose.models?.Page || mongoose.model<PageType>('Page', PageSchema, 'pages');
+const BlogPost =
+	mongoose.models?.BlogPost || mongoose.model<BlogPostType>('BlogPost', BlogPostSchema, 'blog-posts');
 
-export default Page;
+export default BlogPost;

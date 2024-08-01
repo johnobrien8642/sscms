@@ -25,7 +25,7 @@ const ListField = ({
 		title,
 		singleChoice
 	}: {
-		obj: { options: OptionsType & { ref?: string; }; caster?: { options: OptionsType & { ref?: string; } }; instance: string; };
+		obj: { options: OptionsType & { ref?: string; }; caster?: { path?: string; options: OptionsType & { ref?: string; } }; instance: string; };
 		title: string;
 		singleChoice: boolean | undefined;
 	}) => {
@@ -39,11 +39,10 @@ const ListField = ({
 	const { formSelected, setFormSelected, data, setData, setFormCache, formCache } = useManagePageForm();
 	const formTitle = formCache[formCache.active]?.formTitle ?? '';
 
-
 	useEffect(() => {
 		let itemFilterArr;
 		if (obj.options.filterType) {
-			itemFilterArr = formTitle === 'Page' ? templatesEnumValueArr : assetsEnumValueArr;
+			itemFilterArr = obj.caster?.path === 'templatesIds' ? templatesEnumValueArr : assetsEnumValueArr;
 		} else {
 			itemFilterArr = null;
 		}

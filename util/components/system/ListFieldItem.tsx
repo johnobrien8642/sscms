@@ -16,7 +16,7 @@ import {
 	Tooltip,
 	Spinner
 } from '@chakra-ui/react';
-import { truncate } from 'lodash';
+import { set, truncate } from 'lodash';
 import { useManagePageForm } from '../../contexts/useManagePageForm';
 import { EditIcon, AddIcon, MinusIcon, RepeatIcon, DeleteIcon } from '@chakra-ui/icons';
 import { remove, cloneDeep } from 'lodash';
@@ -260,7 +260,11 @@ const ListFieldItem = ({
 											if (singleChoice && title) {
 												newData[formTitle][title] = [item._id];
 											} else if (!singleChoice && title) {
-												newData[formTitle]?.[title].push(item._id);
+												if (newData[formTitle]?.[title]) {
+													newData[formTitle]?.[title].push(item._id);
+												} else {
+													set(newData, `${formTitle}.${title}`, [item._id]);
+												}
 											}
 											return newData;
 										})
@@ -295,9 +299,7 @@ const ListFieldItem = ({
 									})
 									return newData;
 								})
-								if (item.schemaName === 'Page') {
-									setTopLevelModal(true)
-								}
+								setTopLevelModal(true)
 							}}
 							icon={<EditIcon />}
 							mr='.3rem'

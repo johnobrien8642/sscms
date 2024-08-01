@@ -12,7 +12,10 @@ export const config = {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	await connectDb();
-	let pageManager = await PageManager.findOne({ title: 'manage-pages' }).populate('pageIds');
+	const { pageManagerKey } = req.query;
+	const { items } = req.body;
+	if (!pageManagerKey) throw new Error('You must provide a pageManagerKey, check your params')
+	let pageManager = await PageManager.findOne({ title: 'manage-pages' }).select(pageManagerKey).populate(pageManagerKey);
 	let page;
 	if (!pageManager) {
 		page = await new Page({
@@ -25,14 +28,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				metaDescription: ''
 			}
 		}).save()
-		pageManager = await new PageManager({ title: 'manage-pages', pageIds: [page._id] }).save().then((pg: HydratedPageManagerType) => pg.populate('pageIds'))
+		pageManager = await new PageManager({ title: 'manage-pages', pageIds: [page._id], blogPostIds: [] }).save().then((pg: HydratedPageManagerType) => pg.populate(pageManagerKey))
 	}
 
 	if (req.method === 'PUT') {
-		const { pageIdArr } = req.body;
-		pageManager.pageIds = pageIdArr;
+		//@ts-ignore This isn't a string[]
+		pageManager[pageManagerKey] = items;
 		try {
-			const savedPageManager = await pageManager.save().then((pg: HydratedPageManagerType) => pg.populate('pageIds'));
+			const savedPageManager = await pageManager.save().then((pg: HydratedPageManagerType) => pg.populate(pageManagerKey));
 			return res.status(200).json({ success: true, pageManager: savedPageManager });
 		} catch (err: any) {
 			return res.status(500).json({ success: false, errorMessage: err.message });

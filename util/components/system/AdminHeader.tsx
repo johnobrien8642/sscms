@@ -12,8 +12,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Logout from './Logout';
 
-const AdminHeader = ({ title }: { title?: string; }) => {
+const AdminHeader = ({ selected }: { selected: string; }) => {
 	const [loggedIn, setLoggedIn] = useState(false)
+	const pages = ['Pages', 'Blog'];
 	const router = useRouter();
 	const desktop = useBreakpointValue(
 		{
@@ -36,28 +37,34 @@ const AdminHeader = ({ title }: { title?: string; }) => {
 				py='1rem'
 				align="center"
 			>
-				<Button
-					variant='link'
-					mr={desktop ? '2rem' : '0'}
-					sx={{
-						':hover': {
-							textDecoration: 'none'
-						}
-					}}
-					onClick={(e) => {
-						e.preventDefault();
-						router.push('/');
-					}}
-				>
-					<Text
-						as='h2'
-						sx={{ ':hover': { cursor: 'pointer' } }}
-						fontWeight='400'
-						fontSize='min(7vw, 2rem)'
-					>
-						{title}
-					</Text>
-				</Button>
+				{
+					pages.map(page => {
+						return <Button
+							key={page}
+							variant='link'
+							mr={desktop ? '2rem' : '0'}
+							sx={{
+								color: selected === page ? 'black' : 'gray',
+								':hover': {
+									textDecoration: 'none'
+								}
+							}}
+							onClick={(e) => {
+								e.preventDefault();
+								router.push(`/admin/manage-${page.toLowerCase()}`);
+							}}
+						>
+							<Text
+								as='h2'
+								sx={{ ':hover': { cursor: 'pointer' } }}
+								fontWeight='400'
+								fontSize='min(7vw, 2rem)'
+							>
+								{`Manage ${page}`}
+							</Text>
+						</Button>
+					})
+				}
 
 				<HStack
 					as="nav"

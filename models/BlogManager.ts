@@ -1,6 +1,6 @@
 import mongoose, { HydratedDocument, InferSchemaType } from 'mongoose';
 import { OptionsType } from './model-types';
-import { PageType } from './Page';
+import { BlogPostType } from './BlogPost';
 const Schema = mongoose.Schema;
 
 const optionsObj: { [key: string]: OptionsType } = {
@@ -17,13 +17,7 @@ const PageManagerSchema = new Schema({
 		type: String,
 		...optionsObj.title
 	},
-	pageIds: [
-		{
-			type: mongoose.Types.ObjectId,
-			ref: 'Page'
-		}
-	],
-	blogPostIds: [
+	blogIds: [
 		{
 			type: mongoose.Types.ObjectId,
 			ref: 'BlogPost'
@@ -38,7 +32,7 @@ const PageManagerSchema = new Schema({
 
 function autoPopulatePages(next: any) {
 	//@ts-expect-error
-	this.populate('pageIds');
+	this.populate('blogIds');
 	next()
 }
 
