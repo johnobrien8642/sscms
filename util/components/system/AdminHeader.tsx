@@ -39,27 +39,25 @@ const AdminHeader = ({ selected }: { selected: string; }) => {
 			>
 				{
 					pages.map(page => {
-						return <Link
-							key={page}
-							variant='link'
-							mr={desktop ? '2rem' : '0'}
-							sx={{
-								color: selected === page ? 'black' : 'gray',
-								':hover': {
-									textDecoration: 'none'
-								}
-							}}
-							href={`/admin/manage-${page.toLowerCase()}`}
-						>
-							<Text
+						return <Text
+								key={page}
 								as='h2'
-								sx={{ ':hover': { cursor: 'pointer' } }}
+								mr='2%'
+								sx={{
+									color: selected === page ? 'black' : 'gray',
+									':hover': { 
+										cursor: 'pointer' 
+									} 
+								}}
 								fontWeight='400'
-								fontSize='min(7vw, 2rem)'
+								fontSize='min(7vw, 1.5rem)'
 							>
-								{`Manage ${page}`}
-							</Text>
-						</Link>
+								<Link
+									href={`/admin/manage-${page.toLowerCase()}`}
+								>
+									{`Manage ${page}`}
+								</Link>
+						</Text>
 					})
 				}
 
