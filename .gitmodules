@@ -1,0 +1,3 @@
+[submodule "pages"]
+	path = pages
+	url = git@github.com:johnobrien8642/sscms-core-pages.git
