@@ -1,5 +1,4 @@
 import React from "react";
-import { TemplatesEnum } from "../pages/models/model-types";
 import PhotoList from "./components/templates/PhotoList";
 import VideoPlayer from "./components/templates/VideoPlayer";
 import HeadlineOnlyCTA from "./components/templates/HeadlineOnlyCTA";
@@ -12,7 +11,7 @@ import About from "./components/templates/About";
 import OneTimePatrons from "./components/templates/OneTimePatrons";
 import EmbedComp from './components/templates/Embed';
 
-const TemplateMap: { [key in TemplatesEnum]: any } = {
+const TemplateMap: { [key: string]: any } = {
 	'PhotoList': PhotoList,
 	'VideoPlayer': VideoPlayer,
 	'TextBlock': TextBlock,
