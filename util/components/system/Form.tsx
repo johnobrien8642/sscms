@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
 	Button,
 	Text,
@@ -7,7 +7,7 @@ import {
 } from '@chakra-ui/react';
 import FormFields from './FormFields';
 import { useManagePageForm, ManagePageFormDataType, dataInitialValue } from '../../contexts/useManagePageForm';
-import { OptionsType } from '../../../models/model-types';
+import { OptionsType } from '../../../pages/models/model-types';
 import { cloneDeep, kebabCase, set } from 'lodash';
 import axios from 'axios';
 

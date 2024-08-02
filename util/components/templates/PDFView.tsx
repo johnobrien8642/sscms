@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { Box, Flex, Text, Button } from '@chakra-ui/react'
 import { BasePropsType } from '../types/prop_types'
 import Link from 'next/link';
-import { AssetsType, HydratedAssetsType } from '../../../models/Assets';
+import { AssetsType, HydratedAssetsType } from '../../../pages/models/Assets';
 
 const PDFView = ({ template }: BasePropsType) => {
 	const ref = useRef(null);

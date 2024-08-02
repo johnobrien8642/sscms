@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connectDb from '../../lib/mongodb.js';
+import connectDb from '../lib/mongodb.js';
 import aws, { AWSError } from 'aws-sdk'
 export const config = {
 	api: {

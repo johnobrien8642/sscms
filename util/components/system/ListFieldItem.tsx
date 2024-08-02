@@ -21,10 +21,9 @@ import { useManagePageForm } from '../../contexts/useManagePageForm';
 import { EditIcon, AddIcon, MinusIcon, RepeatIcon, DeleteIcon } from '@chakra-ui/icons';
 import { remove, cloneDeep } from 'lodash';
 import { useDrag, useDrop } from 'react-dnd';
-// @ts-expect-error there's no types for lodash-move it's old af
 import move from 'lodash-move';
 import { AllDocUnionType, AllDocType, AllDocArrayType } from '../types/util_types';
-import { OptionsType } from '../../../models/model-types';
+import { OptionsType } from '../../../pages/models/model-types';
 
 const ListFieldItem = ({
 	item,
@@ -308,7 +307,6 @@ const ListFieldItem = ({
 						{item.schemaName !== 'Page' && <IconButton
 							onClick={async () => {
 								let itemRef = { ...item };
-								// @ts-expect-error but I do want to delete a non-optional param tho
 								delete itemRef._id;
 								const res3 = await fetch('/api/handle_duplicate_item',
 								{

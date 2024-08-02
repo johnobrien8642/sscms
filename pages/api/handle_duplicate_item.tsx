@@ -1,5 +1,5 @@
-import connectDb from '../../lib/mongodb.js';
-import models from '../../lib/index'
+import connectDb from '../lib/mongodb.js';
+import models from '../lib/index'
 import mongoose from 'mongoose';
 import { NextApiRequest, NextApiResponse } from 'next';
 export const config = {

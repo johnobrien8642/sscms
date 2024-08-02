@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connectDb from '../../lib/mongodb.js';
-import Admin from '../../models/Admin';
+import connectDb from '../lib/mongodb.js';
+import Admin from '../models/Admin';
 import jwt from 'jsonwebtoken';
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {

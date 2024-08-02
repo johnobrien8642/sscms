@@ -1,3 +1,4 @@
+import React from 'react';
 import {
 	Box,
 	Flex,
@@ -9,7 +10,7 @@ import {
 	AccordionIcon,
 } from '@chakra-ui/react'
 import Link from 'next/link';
-import { PageType } from '../../../models/Page';
+import { PageType } from '../../../pages/models/Page';
 
 const HeaderAccordion = ({ pages }: { pages: PageType[] }) => {
 

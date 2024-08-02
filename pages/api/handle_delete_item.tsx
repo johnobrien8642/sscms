@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import models from '../../lib/index';
+import models from '../lib/index';
 import aws from 'aws-sdk'
-import connectDb from '../../lib/mongodb.js';
+import connectDb from '../lib/mongodb';
 export const config = {
 	api: {
 		bodyParser: {
@@ -42,7 +42,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					key = keysToDeleteArr[i];
 					if (!key) continue;
 					try {
-						await s3.deleteObject({ Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME ?? '', Key: key }, function (err, data) {
+						await s3.deleteObject({ Bucket: process.env.NEXT_PUBLIC_S3_BUCKET_NAME ?? '', Key: key }, function (err: any, data) {
 							console.log(err)
 							if (err) errors.push(err);
 						});

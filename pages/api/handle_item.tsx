@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connectDb from '../../lib/mongodb.js';
-import models from '../../lib/index';
-import PageManager from '../../models/PageManager';
+import connectDb from '../lib/mongodb.js';
+import models from '../lib/index';
+import PageManager from '../models/PageManager';
 export const config = {
 	api: {
 		bodyParser: {

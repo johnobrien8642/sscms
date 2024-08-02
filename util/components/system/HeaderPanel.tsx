@@ -25,7 +25,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import Logout from './Logout';
 import MobileHeader from "./MobileHeader";
-import { PageType } from "../../../models/Page";
+import { PageType } from "../../../pages/models/Page";
 import HeaderAccordion from "./HeaderAccordion";
 
 const HeaderPanel = ({ pages }: { pages: PageType[] }) => {

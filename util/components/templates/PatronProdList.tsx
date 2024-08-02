@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Flex, Text, Heading } from '@chakra-ui/react';
-import { TemplatesType } from '../../../models/Templates';
-import { AssetsType } from '../../../models/Assets';
+import { TemplatesType } from '../../../pages/models/Templates';
+import { AssetsType } from '../../../pages/models/Assets';
 
 const PatronProdList = ({ template }: { template: TemplatesType}) => {
 	return (

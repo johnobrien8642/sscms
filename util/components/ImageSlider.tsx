@@ -6,7 +6,7 @@ import {
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import MyImage from './Image'
 import ImageInfo from './ImageInfo';
-import { AssetsType } from '../../models/Assets';
+import { AssetsType } from '../../pages/models/Assets';
 import { Slide } from 'react-slideshow-image';
 import 'react-slideshow-image/dist/styles.css';
 

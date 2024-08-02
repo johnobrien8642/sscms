@@ -1,2 +1,2 @@
-import { TemplatesType } from "../../../models/Templates"
+import { TemplatesType } from "../../../pages/models/Templates"
 export type BasePropsType = { template: TemplatesType };

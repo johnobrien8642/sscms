@@ -7,8 +7,8 @@ import {
 import MyImage from '../Image';
 import ImageFocus from '../ImageFocus';
 import ImageInfo from '../ImageInfo';
-import { AssetsType } from '../../../models/Assets';
-import { TemplatesType } from '../../../models/Templates';
+import { AssetsType } from '../../../pages/models/Assets';
+import { TemplatesType } from '../../../pages/models/Templates';
 import { BasePropsType } from '../types/prop_types';
 
 const PhotoList = ({ template }: BasePropsType) => {

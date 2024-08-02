@@ -14,9 +14,11 @@ import {
 	AccordionIcon,
 } from '@chakra-ui/react'
 import { dataInitialValue, useManagePageForm } from '../../contexts/useManagePageForm';
-import { assetsEnumValueArr, templatesEnumValueArr } from '../../../models/model-types';
-import { OptionsType } from '../../../models/model-types';
+import { assetsEnumValueArr } from '../../../pages/models/model-types';
+import TemplateMap from '../../TemplateMap';
+import { OptionsType } from '../../../pages/models/model-types';
 import { AllDocUnionType } from '../types/util_types';
+
 import { cloneDeep } from 'lodash';
 import mongoose from 'mongoose';
 
@@ -33,8 +35,9 @@ const ListField = ({
 	const [chosenItems, setChosenItems] = useState<AllDocUnionType[]>([]);
 	const [itemFilter, setItemFilter] = useState('');
 	const [searchAvailable, setSearchAvailable] = useState(false);
+	const templateMapKeys = Object.keys(TemplateMap);
 	const [itemFilterArr, setItemFilterArr] =
-		useState<typeof templatesEnumValueArr | typeof assetsEnumValueArr | null>([]);
+		useState<typeof templateMapKeys | typeof assetsEnumValueArr | null>([]);
 	const [textFilter, setTextFilter] = useState('');
 	const { formSelected, setFormSelected, data, setData, setFormCache, formCache } = useManagePageForm();
 	const formTitle = formCache[formCache.active]?.formTitle ?? '';
@@ -42,7 +45,7 @@ const ListField = ({
 	useEffect(() => {
 		let itemFilterArr;
 		if (obj.options.filterType) {
-			itemFilterArr = obj.caster?.path === 'templatesIds' ? templatesEnumValueArr : assetsEnumValueArr;
+			itemFilterArr = obj.caster?.path === 'templatesIds' ? templateMapKeys : assetsEnumValueArr;
 		} else {
 			itemFilterArr = null;
 		}

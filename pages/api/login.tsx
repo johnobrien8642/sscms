@@ -1,6 +1,6 @@
 import bcrypt from 'bcrypt';
-import dbConnect from '../../lib/mongodb.js';
-import Admin from '../../models/Admin';
+import dbConnect from '../lib/mongodb.js';
+import Admin from '../models/Admin';
 import jwt from 'jsonwebtoken';
 import { NextApiRequest, NextApiResponse } from 'next';
 export const config = {

@@ -1,5 +1,5 @@
 import React from "react";
-import { TemplatesEnum } from "../models/model-types";
+import { TemplatesEnum } from "../pages/models/model-types";
 import PhotoList from "./components/templates/PhotoList";
 import VideoPlayer from "./components/templates/VideoPlayer";
 import HeadlineOnlyCTA from "./components/templates/HeadlineOnlyCTA";

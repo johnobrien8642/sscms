@@ -1,8 +1,8 @@
 import React from 'react';
 import { Box, Flex, Text, Heading } from '@chakra-ui/react';
 import Link from 'next/link';
-import { TemplatesType } from '../../../models/Templates';
-import { PageType } from '../../../models/Page';
+import { TemplatesType } from '../../../pages/models/Templates';
+import { PageType } from '../../../pages/models/Page';
 
 const PDFList = ({ template }: { template: TemplatesType}) => {
 	return (

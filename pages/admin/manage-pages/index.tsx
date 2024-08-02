@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import connectDb from '../../../lib/mongodb.js';
-import Admin from '../../../models/Admin';
+import connectDb from '../../lib/mongodb.js';
+import Admin from '../../models/Admin';
 import jwt from 'jsonwebtoken';
 import AdminHeader from '../../../util/components/system/AdminHeader.tsx';
 import { useRouter } from 'next/router';
