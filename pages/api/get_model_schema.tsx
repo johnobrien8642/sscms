@@ -12,7 +12,7 @@ export const config = {
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	await connectDb();
 	const { formTitle } = req.query;
-	console.log(models)
+	
 	if (models[formTitle as string]) {
 		return res.status(200).json({ schemaPaths: models[formTitle as string].schema.paths });
 	} else {
