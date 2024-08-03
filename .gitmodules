@@ -1,6 +1,6 @@
 [submodule "pages"]
 	path = pages
-	url = git@github.com:johnobrien8642/sscms-core-pages.git
+	url = https://github.com/johnobrien8642/sscms-core-pages.git
 [submodule "core"]
 	path = core
-	url = git@github.com:johnobrien8642/sscmcs-core.git
+	url = https://github.com/johnobrien8642/sscmcs-core.git
