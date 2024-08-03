@@ -3,4 +3,4 @@
 	url = https://github.com/johnobrien8642/sscms-core-pages.git
 [submodule "core"]
 	path = core
-	url = https://github.com/johnobrien8642/sscmcs-core.git
+	url = https://github.com/johnobrien8642/sscms-core.git
