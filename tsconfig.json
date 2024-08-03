@@ -19,17 +19,23 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "paths": {
       "react": [
         "./node_modules/@types/react"
-      ]
+      ],
+      "@client/*": ["client/*"],
+      "@core/*": ["core/*"],
+      "@components/*": ["client/components/*"],
+      "@contexts/*": ["core/contexts/*"],
+      "@pages/*": ["pages/*"],
     },
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
-    ]
+    ],
   },
   "include": [
     "next-env.d.ts",
@@ -37,14 +43,14 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "/home/johnobrien/personal-site/.next/types/**/*.ts",
-    "lib/dbConnect.ts",
+    "core/lib/dbConnect.ts",
     "pages/[[...slug]].js",
     "pages/[..slug]/index.js",
-    "util/components/*.tsx",
-    "util/components/*.ts",
-    "util/components/*.js",
-    "util/components/templates/*.js",
-    "util/components/templates/TextBlock.tdsx"
+    "client/components/*.tsx",
+    "client/components/*.ts",
+    "client/components/*.js",
+    "client/components/templates/*.js",
+    "client/components/templates/TextBlock.tdsx"
   ],
   "exclude": [
     "node_modules"

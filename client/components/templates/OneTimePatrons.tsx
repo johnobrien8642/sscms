@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BasePropsType } from '../types/prop_types';
+import { BasePropsType } from '@core/components/types/prop_types';
 
 const OneTimePatrons = ({ template }: BasePropsType) => {
 	const [sales, setSales] = useState(null);

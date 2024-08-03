@@ -6,7 +6,7 @@ import {
 	Text
 } from '@chakra-ui/react';
 import Image from 'next/image';
-import { BasePropsType } from '../types/prop_types';
+import { BasePropsType } from '@core/components/types/prop_types';
 
 const About = ({ template }: BasePropsType) => {
 	const asset = template.assetsIds[0];

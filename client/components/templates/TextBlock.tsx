@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Box, Heading } from '@chakra-ui/react';
-import { BasePropsType } from '../types/prop_types';
+import { BasePropsType } from '@core/components/types/prop_types';
 
 const TextBlock = ({ template }: BasePropsType) => {
 	return (

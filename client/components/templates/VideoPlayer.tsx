@@ -3,7 +3,7 @@ import { Box, IconButton } from '@chakra-ui/react';
 import { useSearchParams } from 'next/navigation';
 import { MdFullscreen } from "react-icons/md";
 import { useRouter } from 'next/router';
-import { BasePropsType } from '../types/prop_types';
+import { BasePropsType } from '@core/components/types/prop_types';
 
 const VideoPlayer = ({ template }: BasePropsType) => {
 	const [touchStartX, setTouchStartX] = useState(0)

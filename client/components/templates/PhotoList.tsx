@@ -4,12 +4,12 @@ import {
 	Flex,
 	useBreakpointValue
 } from '@chakra-ui/react';
-import MyImage from '../Image';
-import ImageFocus from '../ImageFocus';
-import ImageInfo from '../ImageInfo';
-import { AssetsType } from '../../../pages/models/Assets';
-import { TemplatesType } from '../../../pages/models/Templates';
-import { BasePropsType } from '../types/prop_types';
+import MyImage from '@core/components/system/Image';
+import ImageFocus from '@core/components/system/ImageFocus';
+import ImageInfo from '@core/components/system/ImageInfo';
+import { AssetsType } from '@core/models/Assets';
+import { TemplatesType } from '@core/models/Templates';
+import { BasePropsType } from '@core/components/types/prop_types';
 
 const PhotoList = ({ template }: BasePropsType) => {
 	const [image, setImage] = useState<AssetsType | undefined>();

@@ -9,7 +9,7 @@ import {
 } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { BasePropsType } from '../types/prop_types';
+import { BasePropsType } from '@core/components/types/prop_types';
 
 const BookCoverCTA = ({ template }: BasePropsType) => {
 	const asset = template.assetsIds[0];
