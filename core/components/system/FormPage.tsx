@@ -21,8 +21,7 @@ import { cloneDeep } from 'lodash';
 
 const FormPage = ({ 
 	formType, 
-	pageManagerKey,
-	bypassModal
+	pageManagerKey
 }: { 
 	formType: string; 
 	pageManagerKey: string;
