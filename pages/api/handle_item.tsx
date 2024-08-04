@@ -1,7 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import connectDb from '../../lib/mongodb.js';
-import models from '../../lib/index';
-import PageManager from '../../models/PageManager';
+import connectDb from '@db/lib/mongodb.js';
+import models from '@db/lib/index';
+import PageManager from '@db/models/PageManager';
 export const config = {
 	api: {
 		bodyParser: {
@@ -57,7 +57,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				...data
 			});
 			const savedItem = await item.save();
-			if (!parentItem && formTitleRef) {
+			if (!parentItem && formTitleRef && data?.pageManagerKey) {
 				const { pageManagerKey } = data;
 				pageManager = await PageManager.findOne({ title: 'manage-pages' });
 				await PageManager.findOneAndUpdate({ _id: pageManager._id }, { [pageManagerKey]: [...pageManager[pageManagerKey], savedItem._id] });

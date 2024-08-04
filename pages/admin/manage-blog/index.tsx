@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import connectDb from '../../../lib/mongodb.js';
-import Admin from '../../../models/Admin';
+import connectDb from '@db/lib/mongodb.js';
+import Admin from '@db/models/Admin.ts';
 import jwt from 'jsonwebtoken';
-import AdminHeader from '../../../util/components/system/AdminHeader.tsx';
-import { ManagePageFormProvider, dataInitialValue } from '../../../util/contexts/useManagePageForm.tsx';
+import AdminHeader from '@core/components/system/AdminHeader.tsx';
+import { ManagePageFormProvider, dataInitialValue } from '@core/contexts/useManagePageForm.tsx';
 import Head from 'next/head';
-import FormPage from '../../../util/components/system/FormPage.tsx';
+import FormPage from '@core/components/system/FormPage.tsx';
 import { GetServerSideProps, NextPage } from 'next';
 
 const ManagePages: NextPage<{}> = () => {

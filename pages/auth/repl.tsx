@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
-import dbConnect from '../../lib/mongodb';
+import dbConnect from '@db/lib/mongodb';
 import jwt from 'jsonwebtoken'
 import { GetServerSideProps, NextPage } from 'next';
-import Admin from '../../models/Admin';
+import Admin from '@db/models/Admin';
 import Link from 'next/link';
 import {
 	Center,

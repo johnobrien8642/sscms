@@ -1,10 +1,10 @@
 import React from 'react';
 import Head from 'next/head';
-import Header from '../util/components/system/Header';
-import Templates from '../util/components/system/Templates';
-import connectDb from '../lib/mongodb';
-import PageManager, { PageManagerType } from '../models/PageManager';
-import Page, { PageType } from '../models/Page';
+import Header from '@core/components/system/Header';
+import Templates from '@core/components/system/Templates';
+import connectDb from '@db/lib/mongodb';
+import PageManager, { PageManagerType } from '@db/models/PageManager';
+import Page, { PageType } from '@db/models/Page';
 import { GetStaticProps, NextPage } from 'next';
 
 export type SlugPropsType = {
