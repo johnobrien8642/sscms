@@ -33,7 +33,6 @@ const ManageSettings: NextPage<{}> = () => {
 			})
 			const data = await res.json();
 			const { item } = data;
-			console.log(item)
 			setFormCache((prev: any) => {
 				const newData = cloneDeep(prev);
 				newData[item._id] = {
