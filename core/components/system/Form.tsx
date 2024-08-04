@@ -36,6 +36,7 @@ const Form = ({ formType, pageManagerKey, bypassModal }: { formType: string; pag
 			const res = await fetch(`/api/get_model_schema?formTitle=${formTitle}`, { cache: 'no-store' });
 			const data = await res.json();
 			const { schemaPaths } = data;
+			if (!schemaPaths) return;
 			setFieldArr(Object.entries(schemaPaths));
 		}
 	}, [formCache]);
