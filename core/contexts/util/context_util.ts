@@ -23,6 +23,7 @@ export async function init(models: string[]) {
 			const res = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/get_model_schema?formTitle=${models[i]}`, { cache: 'no-store' })
 			const data = await res.json();
 			const { schemaPaths } = data;
+			if (!schemaPaths) continue;
 			fieldArray = Object.entries(schemaPaths)
 			for (let i2 = 0; i2 < fieldArray.length; i2++) {
 				path = fieldArray[i2][0];
