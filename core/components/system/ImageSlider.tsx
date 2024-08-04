@@ -7,8 +7,6 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import MyImage from './Image'
 import ImageInfo from './ImageInfo';
 import { AssetsType } from '@db/models/Assets';
-import { Slide } from 'react-slideshow-image';
-import 'react-slideshow-image/dist/styles.css';
 
 const ImageSlider = ({
 	images,
