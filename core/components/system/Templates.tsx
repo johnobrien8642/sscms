@@ -3,7 +3,8 @@ import { Center } from '@chakra-ui/react';
 import { useSearchParams } from 'next/navigation';
 import { TemplatesType } from '@db/models/Templates';
 import { TemplatesEnum } from '@db/models/model-types';
-const TemplateMap = await import(`../client-templates/${process.env.SITE_FOLDER}/TemplateMap`);
+import TemplateMap from '@core/components/client-templates/personal-site/TemplateMap';
+// const TemplateMap = await import(`../client-templates/${process.env.SITE_FOLDER}/TemplateMap`);
 
 const Templates = ({ templates }: { templates: TemplatesType[] }) => {
 	const searchParams = useSearchParams();
