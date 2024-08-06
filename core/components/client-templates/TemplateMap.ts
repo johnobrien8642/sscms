@@ -20,7 +20,9 @@ import DP_TextBlock from "./developer-portfolio/TextBlock";
 import DP_PDFView from "./developer-portfolio/PDFView";
 import DP_PDFList from "./developer-portfolio/PDFList";
 import DP_PatronProdList from "./developer-portfolio/PatronProdList";
+import DP_Experience from "./developer-portfolio/Experience";
 import DP_About from "./developer-portfolio/About";
+import DP_LinkList from "./developer-portfolio/LinkList";
 
 const TemplateMap: { [key: string]: { [key: string]: any} } = {
 	'personal-site': {
@@ -44,10 +46,9 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'PDFList': DP_PDFList,
 		'PDFView': DP_PDFView,
 		'PatronProdList': DP_PatronProdList,
-		'BookCoverCTA': DP_BookCoverCTA,
+		'Experience': DP_Experience,
 		'About': DP_About,
-		'OneTimePatrons': DP_OneTimePatrons,
-		'Embed': DP_EmbedComp
+		'LinkList': DP_LinkList
 	}
 }
 
