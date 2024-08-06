@@ -308,6 +308,7 @@ const ListFieldItem = ({
 						{item.schemaName !== 'Page' && <IconButton
 							onClick={async () => {
 								let itemRef = { ...item };
+								//@ts-ignore
 								delete itemRef._id;
 								const res3 = await fetch('/api/handle_duplicate_item',
 								{
