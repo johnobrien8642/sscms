@@ -9,7 +9,8 @@ const MyImage = ({
 	setPhotoHook,
 	setOpenModalHook,
 	padding,
-	priority
+	priority,
+	maxW
 }: {
 	image: AssetsType;
 	height?: number;
@@ -17,6 +18,7 @@ const MyImage = ({
 	setOpenModalHook?: React.Dispatch<React.SetStateAction<boolean>>;
 	padding?: number;
 	priority?: boolean;
+	maxW?: string;
 }) => {
 	const desktop = useBreakpointValue(
 		{
@@ -28,7 +30,7 @@ const MyImage = ({
 	return <Box
 		key={image._id.toString()}
 		width='100%'
-		maxW='825px'
+		maxW={maxW ? maxW : '825px'}
 		padding={padding}
 		height={height}
 		m='auto'
