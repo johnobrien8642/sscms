@@ -8,7 +8,7 @@ const Experience = ({ template }: BasePropsType) => {
 	// 	base: false,
 	// 	md: true
 	// });
-	return <></>
+	return <>Experience is WIP</>
 	// return (
 	// 	<Grid
 	// 		templateColumns={{ base: '1fr', md: '1fr 2fr' }}
