@@ -3,15 +3,17 @@ import { Center } from '@chakra-ui/react';
 import { useSearchParams } from 'next/navigation';
 import { TemplatesType } from '@db/models/Templates';
 import { TemplatesEnum } from '@db/models/model-types';
-import TemplateMap from '@core/components/client-templates/personal-site/TemplateMap';
-// const TemplateMap = await import(`../client-templates/${process.env.SITE_FOLDER}/TemplateMap`);
+import TemplateMap from '@core/components/client-templates/TemplateMap';
 
 const Templates = ({ templates }: { templates: TemplatesType[] }) => {
+	if (!process.env.NEXT_PUBLIC_SITE_FOLDER) {
+		throw new Error('No NEXT_PUBLIC_SITE_FOLDER env var declared, should match the key defined in TemplateMap')
+	}
 	const searchParams = useSearchParams();
 	const mappedComps = templates
 		?.filter(temp => temp?.showMobile)
 		.map(temp => {
-			let C = TemplateMap[temp.type as keyof typeof TemplatesEnum];
+			let C = TemplateMap[process.env.NEXT_PUBLIC_SITE_FOLDER as string][temp.type as keyof typeof TemplatesEnum];
 			let props = { key: temp._id, template: temp, searchParams };
 			return <C {...props} />
 		})
