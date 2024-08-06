@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import {
 	Button,
 	Text,
@@ -40,13 +40,13 @@ const Form = ({ formType, pageManagerKey, bypassModal }: { formType: string; pag
 			setFieldArr(Object.entries(schemaPaths));
 		}
 	}, [formCache]);
-	function resolveHeading() {
+	const resolveHeading = useCallback(() => {
 		let activeItem = formCache[formCache?.active];
 		let previousItem = formCache[activeItem?.previous];
 		return `${activeItem?.update? 'Edit ' : 'Create '}${activeItem?.formTitle}${previousItem ? ` for ${previousItem?.formTitle}` : ''}`
-	}
+	}, [formCache]);
 	return (
-		<Box className="form container" maxW='900px' m='auto'>
+		<Box className="form container" maxW='900px' mx='auto' my='5rem'>
 			<Heading>
 				{resolveHeading()}
 			</Heading>
@@ -146,11 +146,11 @@ const Form = ({ formType, pageManagerKey, bypassModal }: { formType: string; pag
 						const { parent, parentFieldTitleRef, savedItem } = data;
 						const activeItem = formCache[formCache.active];
 						let previousFormTitle: string;
-						if (!activeItem?.previous) {
+						if (!activeItem?.previous && !bypassModal) {
 							setTopLevelModal(false);
 							setData(cloneDeep(dataInitialValue));
 							setFormCache({});
-						} else {
+						} else if (!bypassModal) {
 							previousFormTitle = formCache[activeItem.previous].formTitle;
 							setFormCache((prev: any) => {
 								const newFormCacheData = cloneDeep(prev);

@@ -6,6 +6,7 @@ import connectDb from '@db/lib/mongodb';
 import PageManager, { PageManagerType } from '@db/models/PageManager';
 import Page, { PageType } from '@db/models/Page';
 import { GetStaticProps, NextPage } from 'next';
+import Settings from '@db/models/Settings';
 
 export type SlugPropsType = {
 	pageManager: string;
@@ -68,6 +69,9 @@ export const getStaticProps: GetStaticProps<SlugPropsType> = async (context) => 
 	const pageManager =
 		await PageManager
 			.findOne({});
+	const settings =
+		await Settings
+			.findOne({});
 	let folderHref;
 	if (!context.params?.slug) {
 		folderHref = '/';
@@ -113,6 +117,7 @@ export const getStaticProps: GetStaticProps<SlugPropsType> = async (context) => 
 	} else {
 		return {
 			props: {
+				settings: JSON.stringify(settings),
 				pageManager: JSON.stringify(pageManager),
 				page: JSON.stringify(page)
 			}

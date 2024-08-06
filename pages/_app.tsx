@@ -8,14 +8,15 @@ const inter = IBM_Plex_Serif({ subsets: ['latin'], weight: ['400', '500', '600',
 import React, { useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 
-const MyApp: AppType<{ admin: boolean; }> = ({ Component, pageProps }) => {
+const MyApp: AppType<{ admin: boolean; settings: any; }> = ({ Component, pageProps }) => {
 	let themeObj = {};
+	const { settings } = pageProps;
 	if (!pageProps.admin) {
 		themeObj = {
 			fonts: {
-				body: '__IBM_Plex_Serif_7fa7cd, __IBM_Plex_Serif_Fallback_7fa7cd',
-				heading: '__IBM_Plex_Serif_7fa7cd, __IBM_Plex_Serif_Fallback_7fa7cd',
-				mono: '__IBM_Plex_Serif_7fa7cd, __IBM_Plex_Serif_Fallback_7fa7cd'
+				body: settings.bodyFontFamily,
+				heading: settings.headingFontFamily,
+				mono: settings.monoFontFamily
 			},
 			components: {
 				Button: {
@@ -28,12 +29,12 @@ const MyApp: AppType<{ admin: boolean; }> = ({ Component, pageProps }) => {
 			semanticTokens: {
 				colors: {
 					'chakra-body-bg': {
-						_dark: process.env.NEXT_PUBLIC_BG_COLOR,
-						_light: process.env.NEXT_PUBLIC_BG_COLOR
+						_dark: settings.siteBgColor,
+						_light: settings.siteBgColor
 					},
 					'chakra-body-text': {
-						_dark: process.env.NEXT_PUBLIC_BG_COLOR === '#2b2b2b' ? 'white' : 'black',
-						_light: process.env.NEXT_PUBLIC_BG_COLOR === '#2b2b2b' ? 'white' : 'black'
+						_dark: settings.siteBgColor === '#Eeeeee' ? 'white' : 'black',
+						_light: settings.siteBgColor === '#Eeeeee' ? 'white' : 'black'
 					}
 				}
 			}

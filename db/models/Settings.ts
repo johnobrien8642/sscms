@@ -11,6 +11,15 @@ const optionsObj: { [key: string]: OptionsType } = {
 		default: '#Eeeeee',
 		formTitle: 'Site Background Color'
 	},
+	bodyFontFamily: {
+		formTitle: 'Body Font Family'
+	},
+	headingFontFamily: {
+		formTitle: 'Heading Font Family'
+	},
+	monoFontFamily: {
+		formTitle: 'Mono Font Family'
+	},
 	schemaName: {
 		default: 'Settings',
 		hide: true,
@@ -36,6 +45,18 @@ const SettingsSchema = new Schema({
 	siteBgColor: {
 		type: String,
 		...optionsObj.siteBgColor
+	},
+	bodyFontFamily: {
+		type: String,
+		...optionsObj.bodyFontFamily
+	},
+	headingFontFamiy: {
+		type: String,
+		...optionsObj.headingFontFamily
+	},
+	monoFontFamily: {
+		type: String,
+		...optionsObj.monoFontFamily
 	},
 	schemaName: {
 		type: String,
