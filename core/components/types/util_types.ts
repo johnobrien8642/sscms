@@ -1,6 +1,6 @@
-import { AssetsType } from "../../../../db/models/Assets"
-import { TemplatesType } from "../../../../db/models/Templates"
-import { PageType } from "../../../../db/models/Page"
+import { AssetsType } from "@db/models/Assets"
+import { TemplatesType } from "@db/models/Templates"
+import { PageType } from "@db/models/Page"
 
 // export type AllDocItemType<T extends AssetsType | TemplatesType | PageType>
 // = T extends AssetsType ? AssetsType :
