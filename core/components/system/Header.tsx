@@ -19,7 +19,7 @@ import MobileHeader from "./MobileHeader";
 import { PageType } from "@db/models/Page";
 import HeaderPanel from "./HeaderPanel";
 
-const Header = ({ pages }: { pages: PageType[] }) => {
+const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const router = useRouter();
@@ -29,10 +29,6 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 			md: true
 		}
 	)
-	const settings = {
-		// Flip to true for hamburger nav panel with nested accordion links
-		nestedDropdownNav: false
-	}
 
 	useEffect(() => {
 		if(window.localStorage.getItem(process.env.NEXT_PUBLIC_LOGGED_IN_VAR as string)) {
@@ -40,7 +36,7 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 		}
 	}, [])
 
-	if (settings.nestedDropdownNav) {
+	if (settings?.headerNestedDropdown) {
 		return (
 			<chakra.header id="header">
 				<Flex
@@ -75,7 +71,7 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 							fontSize='min(5vw, 2rem)'
 							whiteSpace='pre-wrap'
 						>
-							{process.env.NEXT_PUBLIC_SITE_HEADER}
+							{settings?.siteTitle}
 						</Text>
 					</Button>
 					<HeaderPanel pages={pages} />
@@ -117,7 +113,7 @@ const Header = ({ pages }: { pages: PageType[] }) => {
 							fontWeight='600'
 							fontSize='min(4.2vw, 1.5rem)'
 						>
-							{process.env.NEXT_PUBLIC_SITE_HEADER}
+							{settings?.siteTitle}
 						</Text>
 					</Button>
 

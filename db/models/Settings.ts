@@ -20,6 +20,10 @@ const optionsObj: { [key: string]: OptionsType } = {
 	monoFontFamily: {
 		formTitle: 'Mono Font Family'
 	},
+	headerNestedDropdown: {
+		formTitle: 'Header Nested Dropdown?',
+		default: false
+	},
 	schemaName: {
 		default: 'Settings',
 		hide: true,
@@ -57,6 +61,10 @@ const SettingsSchema = new Schema({
 	monoFontFamily: {
 		type: String,
 		...optionsObj.monoFontFamily
+	},
+	headerNestedDropdown: {
+		type: Boolean,
+		...optionsObj.headerNestedDropdown
 	},
 	schemaName: {
 		type: String,

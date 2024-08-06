@@ -11,9 +11,10 @@ import Settings from '@db/models/Settings';
 export type SlugPropsType = {
 	pageManager: string;
 	page: string;
+	settings: any;
 }
 
-const Home: NextPage<SlugPropsType> = ({ pageManager, page }) => {
+const Home: NextPage<SlugPropsType> = ({ pageManager, page, settings }) => {
 	if (!pageManager) {
 		return <></>
 	} else {
@@ -36,6 +37,7 @@ const Home: NextPage<SlugPropsType> = ({ pageManager, page }) => {
 				</Head>
 				<Header
 					pages={pPageManager.pageIds}
+					settings={settings}
 				/>
 				<Templates templates={pPage.templatesIds} />
 			</>
