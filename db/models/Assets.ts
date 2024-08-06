@@ -1,5 +1,5 @@
 import mongoose, { InferSchemaType, HydratedDocument } from 'mongoose';
-import { assetTypes, textAlignOptions } from '../../.next/core/components/system/template_options';
+import { assetTypes, textAlignOptions } from '@core/components/system/template_options';
 import { OptionsType, assetsEnumValueArr, textAlignOptionsEnumValueArr } from './model-types';
 const Schema = mongoose.Schema;
 const { Buffer } = Schema.Types;

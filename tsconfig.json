@@ -47,11 +47,11 @@
     "lib/dbConnect.ts",
     "pages/[[...slug]].js",
     "pages/[..slug]/index.js",
-    ".next/core/components/*.tsx",
-    ".next/core/components/*.ts",
-    ".next/core/components/*.js",
-    ".next/core/components/client-templates/*.js",
-    ".next/core/components/client-templates/TextBlock.tdsx"
+    "core/components/*.tsx",
+    "core/components/*.ts",
+    "core/components/*.js",
+    "core/components/client-templates/*.js",
+    "core/components/client-templates/TextBlock.tdsx"
   ],
   "exclude": [
     "node_modules"
