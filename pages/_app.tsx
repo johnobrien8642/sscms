@@ -14,9 +14,9 @@ const MyApp: AppType<{ admin: boolean; settings: any; }> = ({ Component, pagePro
 	if (!pageProps.admin) {
 		themeObj = {
 			fonts: {
-				body: settings.bodyFontFamily,
-				heading: settings.headingFontFamily,
-				mono: settings.monoFontFamily
+				body: settings?.bodyFontFamily,
+				heading: settings?.headingFontFamily,
+				mono: settings?.monoFontFamily
 			},
 			components: {
 				Button: {
@@ -29,12 +29,12 @@ const MyApp: AppType<{ admin: boolean; settings: any; }> = ({ Component, pagePro
 			semanticTokens: {
 				colors: {
 					'chakra-body-bg': {
-						_dark: settings.siteBgColor,
-						_light: settings.siteBgColor
+						_dark: settings?.siteBgColor,
+						_light: settings?.siteBgColor
 					},
 					'chakra-body-text': {
-						_dark: settings.siteBgColor === '#Eeeeee' ? 'white' : 'black',
-						_light: settings.siteBgColor === '#Eeeeee' ? 'white' : 'black'
+						_dark: settings?.siteBgColor === '#Eeeeee' ? 'white' : 'black',
+						_light: settings?.siteBgColor === '#Eeeeee' ? 'white' : 'black'
 					}
 				}
 			}
