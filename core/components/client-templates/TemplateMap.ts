@@ -17,7 +17,7 @@ import DP_PhotoList from "./developer-portfolio/PhotoList";
 import DP_VideoPlayer from "./developer-portfolio/VideoPlayer";
 import DP_HeadlineOnlyCTA from "./developer-portfolio/HeadlineOnlyCTA";
 import DP_TextBlock from "./developer-portfolio/TextBlock";
-import DP_PDFView from "./developer-portfolio/PDFView";π
+import DP_PDFView from "./developer-portfolio/PDFView";
 import DP_PDFList from "./developer-portfolio/PDFList";
 import DP_PatronProdList from "./developer-portfolio/PatronProdList";
 import DP_BookCoverCTA from "./developer-portfolio/BookCoverCTA";
