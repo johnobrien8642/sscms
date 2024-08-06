@@ -19,14 +19,14 @@ const About = ({ template }: BasePropsType) => {
 		<Grid
 			gridTemplateColumns={{ base: '1fr', lg: '1fr .5fr'}}
 			gap={{ base: '1rem', md: '5rem' }}
-			p={{ base: '0', md: '1rem' }}
+			p='1rem'
 		>
 			<Box
 				pl={{ base: '0', lg: '2rem' }}
 				order={{ base: '1', lg: '0'}}
 				textAlign={{ base: 'center', lg: 'left'}}
 			>
-				<Heading mb={{ base: '0', lg: '2rem' }}>{asset.description}</Heading>
+				<Heading mb={{ base: '0', lg: '2rem'}}>{asset.description}</Heading>
 				<Text
 					as='span'
 					display='inline-block'

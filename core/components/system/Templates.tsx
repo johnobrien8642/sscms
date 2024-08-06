@@ -14,8 +14,8 @@ const Templates = ({ templates }: { templates: TemplatesType[] }) => {
 		?.filter(temp => temp?.showMobile)
 		.map(temp => {
 			let C = TemplateMap[process.env.NEXT_PUBLIC_SITE_FOLDER as string][temp.type as keyof typeof TemplatesEnum];
-			let props = { key: temp._id, template: temp, searchParams };
-			return <C {...props} />
+			let props = { template: temp, searchParams };
+			return <C key={temp._id} {...props} />
 		})
 
 	return (

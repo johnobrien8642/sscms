@@ -22,6 +22,7 @@ const TextBlock = ({ template }: BasePropsType) => {
 						resolveMargin = '0 0 0 auto'
 					}
 					return <Box
+						key={obj._id}
 						width='82%'
 						m={resolveMargin}
 					>

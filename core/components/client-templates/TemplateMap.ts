@@ -20,10 +20,7 @@ import DP_TextBlock from "./developer-portfolio/TextBlock";
 import DP_PDFView from "./developer-portfolio/PDFView";
 import DP_PDFList from "./developer-portfolio/PDFList";
 import DP_PatronProdList from "./developer-portfolio/PatronProdList";
-import DP_BookCoverCTA from "./developer-portfolio/BookCoverCTA";
 import DP_About from "./developer-portfolio/About";
-import DP_OneTimePatrons from "./developer-portfolio/OneTimePatrons";
-import DP_EmbedComp from './developer-portfolio/Embed';
 
 const TemplateMap: { [key: string]: { [key: string]: any} } = {
 	'personal-site': {

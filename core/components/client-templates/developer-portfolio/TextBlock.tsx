@@ -5,11 +5,11 @@ import { BasePropsType } from '@core/components/types/prop_types';
 const TextBlock = ({ template }: BasePropsType) => {
 	return (
 		<Box
-			width={{ base: '90%', md: '75%' }}
-			m='auto'
-			mt={{ base: '2rem', md: '5rem' }}
-			mb={{ base: '2rem', md: '5rem' }}
-			fontSize='min(5vw, 2rem)'
+			width={{ base: '90%', md: '62%' }}
+			ml={{ md: '3rem' }}
+			mr={{ md: 'auto' }}
+			my={{ base: '2rem', md: '2rem' }}
+			fontSize='1.2rem'
 		>
 			{
 				template.assetsIds.map(obj => {
@@ -22,7 +22,6 @@ const TextBlock = ({ template }: BasePropsType) => {
 						resolveMargin = '0 0 0 auto'
 					}
 					return <Box
-						width='82%'
 						m={resolveMargin}
 					>
 						{obj.title && <Heading
@@ -36,6 +35,8 @@ const TextBlock = ({ template }: BasePropsType) => {
 							as='span'
 							dangerouslySetInnerHTML={{ __html: obj.richDescription ?? '' }}
 							text-align={obj?.textAlign}
+							fontSize='1.5rem'
+							lineHeight='2.5rem'
 						/>
 					</Box>
 

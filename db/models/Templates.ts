@@ -1,5 +1,5 @@
 import mongoose, { InferSchemaType, HydratedDocument, Types } from 'mongoose';
-import { templateOptions } from '../../core/components/system/template_options'
+import { templateOptions } from '../../.next/core/components/system/template_options'
 import { OptionsType, templatesEnumValueArr } from './model-types';
 import { AssetsType } from './Assets';
 import { PageType } from './Page';
