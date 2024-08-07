@@ -67,7 +67,7 @@ const ManageSettings: NextPage<{}> = () => {
 				topLevelModal={topLevelModal}
 			>
 				<AdminHeader selected='Settings' />
-				<Form formType='Settings' bypassModal />
+				<Form formType='Settings' bypassModal revalidateAll />
 			</ManagePageFormProvider>
 		</>
 	)

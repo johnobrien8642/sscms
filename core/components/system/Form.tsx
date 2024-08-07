@@ -12,7 +12,17 @@ import { OptionsType } from '@db/models/model-types';
 import { cloneDeep, kebabCase, set } from 'lodash';
 import axios from 'axios';
 
-const Form = ({ formType, pageManagerKey, bypassModal }: { formType: string; pageManagerKey?: string; bypassModal?: boolean; }) => {
+const Form = ({ 
+	formType, 
+	pageManagerKey, 
+	bypassModal, 
+	revalidateAll 
+}: { 
+	formType: string; 
+	pageManagerKey?: string; 
+	bypassModal?: boolean; 
+	revalidateAll?: boolean; 
+}) => {
 	const [fieldArr, setFieldArr] = useState<[string, any][]>([]);
 	const [parentDoc, setParentDoc] = useState<any | null>(null);
 	let [error, setError] = useState('');
@@ -135,7 +145,8 @@ const Form = ({ formType, pageManagerKey, bypassModal }: { formType: string; pag
 						body: JSON.stringify({
 							data: {
 								...data[formTitle],
-								pageManagerKey
+								pageManagerKey,
+								revalidateAll
 							},
 							folderHref: data[formTitle]?.folderHref
 						}),
@@ -168,7 +179,6 @@ const Form = ({ formType, pageManagerKey, bypassModal }: { formType: string; pag
 									delete newFormCacheData[activeItem._id];
 									return newData;
 								})
-
 								return newFormCacheData;
 							})
 						}

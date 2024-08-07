@@ -22,12 +22,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const {
 		data,
 		folderHref,
-		pageManagerKey
+		pageManagerKey,
+		revalidateAll
 		// update,
 		// itemToEditId,
 		// parentId
 	} = req.body
-	
+
 	let item;
 	let parentItem;
 	let itemExistsAlready;
@@ -74,6 +75,18 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			parentItem = await models[formTitleRef].findById(data.previous);
 			if (parentItem && parentItem.schemaName === formTitleRef && formTitleRef === 'Page') {
 				data.folderHref = (parentItem.folderHref === '/' ? '' : parentItem.folderHref) + data.folderHref;
+				try {
+					await res.revalidate(folderHref);
+				} catch (err) {
+				}
+			}
+			if (revalidateAll) {
+				const allPages = 
+					await models['Page']
+						.find({}).select('folderHref');
+				for (let i = 0; i < allPages.length; i++) {
+					await revalidateAll(allPages[i].folderHref);
+				}
 			}
 			deleteAdminFields(data)
 			await models[formTitleRef].findOneAndUpdate(
@@ -82,10 +95,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 					...data
 				}
 			);
-			try {
-				await res.revalidate(folderHref);
-			} catch (err) {
-			}
 			return res.status(200).json({ success: true, _id: item._id, parent: parentItem, parentFieldTitleRef, savedItem: { _id } });
 		} catch (err: any) {
 			return res.status(500).json({ success: false, errorMessage: err.message });
