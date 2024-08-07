@@ -7,9 +7,21 @@ const optionsObj: { [key: string]: OptionsType } = {
 	siteTitle: {
 		formTitle: 'Site Title'
 	},
-	siteBgColor: {
+	siteBgColor_dark: {
 		default: '#Eeeeee',
-		formTitle: 'Site Background Color'
+		formTitle: 'Site Background Color (Dark)'
+	},
+	siteBgColor_light: {
+		default: '#Eeeeee',
+		formTitle: 'Site Background Color (Light)'
+	},
+	siteFontColor_dark: {
+		default: '#Eeeeee',
+		formTitle: 'Site Font Color (Dark)'
+	},
+	siteFontColor_light: {
+		default: '#Eeeeee',
+		formTitle: 'Site Font Color (Light)'
 	},
 	bodyFontFamily: {
 		formTitle: 'Body Font Family'
@@ -46,9 +58,21 @@ const SettingsSchema = new Schema({
 		type: String,
 		...optionsObj.siteTitle
 	},
-	siteBgColor: {
+	siteBgColor_dark: {
 		type: String,
-		...optionsObj.siteBgColor
+		...optionsObj.siteBgColor_dark
+	},
+	siteBgColor_light: {
+		type: String,
+		...optionsObj.siteBgColor_light
+	},
+	siteFontColor_dark: {
+		type: String,
+		...optionsObj.siteFontColor_dark
+	},
+	siteFontColor_light: {
+		type: String,
+		...optionsObj.siteFontColor_light
 	},
 	bodyFontFamily: {
 		type: String,

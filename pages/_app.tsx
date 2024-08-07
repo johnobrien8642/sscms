@@ -11,12 +11,13 @@ import { Analytics } from "@vercel/analytics/react";
 const MyApp: AppType<{ admin: boolean; settings: any; }> = ({ Component, pageProps }) => {
 	let themeObj = {};
 	const { settings } = pageProps;
-	if (!pageProps.admin) {
+	if (!pageProps.admin && settings) {
+		const pSettings = JSON.parse(settings);
 		themeObj = {
 			fonts: {
-				body: settings?.bodyFontFamily,
-				heading: settings?.headingFontFamily,
-				mono: settings?.monoFontFamily
+				body: pSettings?.bodyFontFamily,
+				heading: pSettings?.headingFontFamily,
+				mono: pSettings?.monoFontFamily
 			},
 			components: {
 				Button: {
@@ -29,12 +30,12 @@ const MyApp: AppType<{ admin: boolean; settings: any; }> = ({ Component, pagePro
 			semanticTokens: {
 				colors: {
 					'chakra-body-bg': {
-						_dark: settings?.siteBgColor,
-						_light: settings?.siteBgColor
+						_dark: pSettings?.siteBgColor_dark,
+						_light: pSettings?.siteBgColor_light
 					},
 					'chakra-body-text': {
-						_dark: settings?.siteBgColor === '#Eeeeee' ? 'white' : 'black',
-						_light: settings?.siteBgColor === '#Eeeeee' ? 'white' : 'black'
+						_dark: pSettings?.siteFontColor_dark,
+						_light: pSettings?.siteFontColor_light
 					}
 				}
 			}
@@ -46,8 +47,8 @@ const MyApp: AppType<{ admin: boolean; settings: any; }> = ({ Component, pagePro
 		} else {
 			document.body.classList.remove('admin')
 		}
-	}, [pageProps])
-	const theme = extendTheme(themeObj)
+	}, [pageProps]);
+	const theme = extendTheme(themeObj);
 	return (
 		<ChakraProvider theme={theme}>
 			<DndProvider backend={HTML5Backend}>

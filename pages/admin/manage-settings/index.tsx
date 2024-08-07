@@ -84,7 +84,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 		) as { id?: string; };
 	}
 	const authenticated = await Admin.findById(decoded?.id);
-
 	if (authenticated) {
 		return {
 			props: {
