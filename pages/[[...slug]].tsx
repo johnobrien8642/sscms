@@ -20,6 +20,7 @@ const Home: NextPage<SlugPropsType> = ({ pageManager, page, settings }) => {
 	} else {
 		const pPage: PageType = JSON.parse(page);
 		const pPageManager: PageManagerType = JSON.parse(pageManager);
+		const pSettings: PageManagerType = JSON.parse(settings);
 		return (
 			<>
 				<Head>
@@ -37,7 +38,7 @@ const Home: NextPage<SlugPropsType> = ({ pageManager, page, settings }) => {
 				</Head>
 				<Header
 					pages={pPageManager.pageIds}
-					settings={settings}
+					settings={pSettings}
 				/>
 				<Templates templates={pPage.templatesIds} />
 			</>

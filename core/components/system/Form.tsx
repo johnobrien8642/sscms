@@ -58,7 +58,7 @@ const Form = ({
 	return (
 		<Box className="form container" maxW='900px' mx='auto' my='5rem'>
 			<Heading>
-				{resolveHeading()}
+				{formCache[formCache?.active]?.formTitle && resolveHeading()}
 			</Heading>
 			<form
 				onSubmit={async (e) => {
