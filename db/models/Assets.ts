@@ -15,7 +15,8 @@ const optionsObj: { [key: string]: OptionsType } = {
 		previewTypeKey: 'assetPreviewType',
 		index: true,
 		templates: {
-			'PhotoList': 1
+			'PhotoList': 1,
+			'BookCoverCTA': 1
 		}
 	},
 	assetDimensions: {
