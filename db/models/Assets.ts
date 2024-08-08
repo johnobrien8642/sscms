@@ -15,8 +15,7 @@ const optionsObj: { [key: string]: OptionsType } = {
 		previewTypeKey: 'assetPreviewType',
 		index: true,
 		templates: {
-			'PhotoList': 1,
-			'PDFView': 1
+			'PhotoList': 1
 		}
 	},
 	assetDimensions: {
@@ -52,7 +51,9 @@ const optionsObj: { [key: string]: OptionsType } = {
 	description: {
 		textbox: true,
 		formTitle: 'Regular Text',
-		templates: {}
+		templates: {
+			'About': 1
+		}
 	},
 	textAlign: {
 		enum: textAlignOptionsEnumValueArr,
@@ -61,22 +62,32 @@ const optionsObj: { [key: string]: OptionsType } = {
 		formTitle: 'Rich Text and Title Align',
 		defaultValue: 'left',
 		templates: {
-			'TextBlock': 1
+			'TextBlock': 1,
+			'Experience': 1
 		}
 	},
 	richDescription: {
 		richText: true,
 		formTitle: 'Rich Text',
 		templates: {
+			'About': 1,
+			'Experience': 1,
+			'PatronProdList': 1,
+			'BookCoverCTA': 1,
 			'PhotoList': 1,
 			'TextBlock': 1,
 			'PDFView': 1
 		}
 	},
-	fontSize: {},
+	fontSize: {
+		formTitle: 'Font Size',
+		templates: {}
+	},
 	extLink: {
 		formTitle: 'External Link',
 		templates: {
+			'LinkList': 1,
+			'BookCoverCTA': 1,
 			'PhotoList': 1,
 			'PDFView': 1
 		}
@@ -84,13 +95,15 @@ const optionsObj: { [key: string]: OptionsType } = {
 	extLinkText: {
 		formTitle: 'External Link Text',
 		templates: {
-			'PhotoList': 1,
-			'PDFView': 1
+			'LinkList': 1
 		}
 	},
 	pagesIds: {
 		formTitle: 'Page',
-		filterType: false
+		filterType: false,
+		templates: {
+			'PDFList': 1,
+		}
 	},
 	schemaName: {
 		default: 'Assets',

@@ -85,7 +85,7 @@ export type OptionsType = {
 	previewTypeKey?: string;
 	// For highlighting fields in use for a given template in blue,
 	// i.e. this field is used in ImageGrid, include it as { 'ImageGrid': 1 }
-	templates?: { [key in TemplatesEnum]?: 1; };
+	templates?: { [key: string]: number; };
 	// For limiting subdocument choices to just a single document in the form
 	singleChoice?: boolean;
 	// For showing filter types for ListField if needed/available

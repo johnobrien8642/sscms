@@ -207,17 +207,19 @@ const FormFields = ({ fieldArr, bypassModal }: { fieldArr?: [string, any][]; byp
 				}}
 			>
 				{
-					fields?.map(sub => {
+					fields?.flatMap(sub => {
 						const titleLevel1: string = sub[0];
 						const obj: any = sub[1];
-						const inUse = obj.options?.templates?.[data['Templates'].type];
+						if (
+							obj.options?.templates && 
+								!obj.options?.templates
+									?.[data['Templates'].type]
+						) return [];
 						if (obj.options.collapseTitle) {
 							return <Skeleton isLoaded={!formSelected.loading} key={titleLevel1 + obj.options}>
 								<Accordion allowToggle mb='1rem'>
 									<AccordionItem>
-										<AccordionButton
-											backgroundColor={inUse && formTitle !== 'Page' ? 'var(--chakra-colors-blue-100)' : ''}
-										>
+										<AccordionButton>
 											{obj.options.collapseTitle}
 										<AccordionIcon />
 										</AccordionButton>
@@ -249,7 +251,6 @@ const FormFields = ({ fieldArr, bypassModal }: { fieldArr?: [string, any][]; byp
 							>
 								<FormLabel
 									htmlFor={titleLevel1}
-									backgroundColor={inUse ? 'var(--chakra-colors-blue-100)' : ''}
 									fontSize='1.4rem'
 								>
 									{capitalize(obj.options.formTitle ?? titleLevel1)}
