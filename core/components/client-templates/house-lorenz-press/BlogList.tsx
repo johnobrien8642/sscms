@@ -97,10 +97,7 @@ const BlogList = ({ template }: BasePropsType) => {
 				</ScrollAnimation>
 			})}
 		</Flex>
-		<SubscribeForm
-			src={"https://eocampaign1.com/form/3dcc5fd4-72db-11ef-9dfb-0d50689671f2.js"}
-			dataForm={"3dcc5fd4-72db-11ef-9dfb-0d50689671f2"}
-		/>
+		<SubscribeForm />
 		<Pagination
 			current={currentPage}
 			totalItems={blogPostsCount}

@@ -2,17 +2,11 @@ import { Center, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import Script from 'next/script';
 
-const SubscribeForm = ({
-	src,
-	dataForm
-}: {
-	src: string;
-	dataForm: string;
-}) => {
+const SubscribeForm = () => {
 	return <Script 
 		async 
-		src={src}
-		data-form={dataForm}
+		src={process.env.NEXT_PUBLIC_EO_SRC}
+		data-form={process.env.NEXT_PUBLIC_EO_DATA_FORM_ID}
 	></Script>
 };
 
