@@ -1,3 +1,4 @@
+import { Types } from 'mongoose';
 import { NextApiRequest, NextApiResponse } from 'next';
 import BlogPost from '@db/models/BlogPost'
 import connectDb from '@db/lib/mongodb';
@@ -14,12 +15,12 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const { _id } = req.query;
     const prev = 
 		await BlogPost
-			.findOne({ _id: { $lt: _id } })
+			.findOne({ $and: [{ _id: { $lt: _id } }, { _id: { $ne: Types.ObjectId(_id) } }]  })
 			.sort('-createdAt')
 			.select('title folderHref');
     const next = 
 		await BlogPost
-		.findOne({ _id: { $gt: _id } })
+		.findOne({ $and: [{ _id: { $gt: _id } }, { _id: { $ne: Types.ObjectId(_id) } }]  })
 		.sort('createdAt')
 		.select('title folderHref');
     return res.status(200).json({ prev, next });
