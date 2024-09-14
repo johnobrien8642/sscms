@@ -129,7 +129,10 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			if (data.updateAllDraftsForPublish) {
 				await models[data.schemaName as string]
 					.updateMany(
-						{ _id: { $ne: data._id } }, 
+						{ 
+							_id: { $ne: data._id },
+							folderHref: data.folderHref
+						}, 
 						{
 							isPublished: false,
 							isActiveDraft: false
