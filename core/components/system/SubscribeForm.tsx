@@ -1,4 +1,3 @@
-import { Center, Box, Text } from '@chakra-ui/react';
 import React from 'react';
 import Script from 'next/script';
 
