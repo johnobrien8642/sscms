@@ -11,6 +11,7 @@ import D_EmbedComp from './demo/Embed';
 import D_BlogList from './demo/BlogList';
 import D_SideBySide from './demo/SideBySide';
 import D_SinglePhotoHighlight from './demo/SinglePhotoHighlight';
+import D_BlogDetail from './demo/BlogDetail';
 
 const TemplateMap: { [key: string]: { [key: string]: any} } = {
 	//Add as many sites as you want here following this same import convention.
@@ -28,7 +29,8 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'Embed': D_EmbedComp,
 		'BlogList': D_BlogList,
 		'SinglePhotoHighlight': D_SinglePhotoHighlight,
-		'SideBySide': D_SideBySide
+		'SideBySide': D_SideBySide,
+		'BlogDetail': D_BlogDetail
 	},
 	// 'some-other-site': { 
 	//    'AnotherTemplate: SOS_AnotherTemplate,
