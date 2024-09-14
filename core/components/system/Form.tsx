@@ -290,8 +290,8 @@ const Form = ({
 				}}
 			>
 				<Grid
-					gridTemplateColumns={{ base: '1fr', lg: '50% 50%' }}
-					gap='1rem'
+					gridTemplateColumns={{ base: '1fr', lg: '49% 49%' }}
+					gap='2%'
 					position='relative'
 					height='100vh'
 				>

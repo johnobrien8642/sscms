@@ -207,15 +207,11 @@ const FormPage = ({
 							setFormCache({});
 						}}
 					/>
-					<ModalBody
-						overflow='hidden'
-					>
-						<Form 
-							formTitleProp={formTitle} 
-							pageManagerKey={pageManagerKey}
-							setRefetch={setRefetch}
-						/>
-					</ModalBody>
+					<Form 
+						formTitleProp={formTitle} 
+						pageManagerKey={pageManagerKey}
+						setRefetch={setRefetch}
+					/>
 					<ModalFooter>
 						<Button
 							colorScheme='blue'
