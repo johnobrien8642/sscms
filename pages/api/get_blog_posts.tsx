@@ -26,7 +26,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 	const posts = 
         await BlogPost
             .find(query)
-            .populate('mainImage')
+            // .populate('mainImage')
             .sort('-createdAt')
             .skip(parseInt(skip as string))
             .limit(6);

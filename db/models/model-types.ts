@@ -34,7 +34,8 @@ export enum TextAlignOptionsEnum {
 
 export enum BlogPostTopicOptionsEnum {
 	Travel = 'Travel',
-	Tech = 'Tech'
+	Tech = 'Tech',
+	BookReview = 'Book Review'
 }
 
 export type SubdocumentType = {

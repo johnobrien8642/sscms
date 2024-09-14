@@ -136,6 +136,8 @@ const Form = ({
 		<Box 
 			className="form container" 
 			my={{ base: '0', lg: bypassModal ? '5rem' : '0' }}
+			m={{ base: '0', lg: '1rem'}}
+			width='100%'
 			overflowY={{ base: 'scroll', lg: 'hidden' }}
 		>
 			<Heading
@@ -290,8 +292,8 @@ const Form = ({
 				}}
 			>
 				<Grid
-					gridTemplateColumns={{ base: '1fr', lg: '50% 50%' }}
-					gap='1rem'
+					gridTemplateColumns={{ base: '1fr', lg: '49% 49%' }}
+					gap='2%'
 					position='relative'
 					height='100vh'
 				>

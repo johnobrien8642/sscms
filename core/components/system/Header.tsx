@@ -16,7 +16,7 @@ import MobileHeader from "./MobileHeader";
 import { PageType } from "@db/models/Page";
 import HeaderPanel from "./HeaderPanel";
 
-const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
+const Header = ({ pages, settings, headerFont }: { pages: PageType[], settings: any; headerFont: string; }) => {
 	const [loggedIn, setLoggedIn] = useState(false);
 	const { isOpen, onOpen, onClose } = useDisclosure();
 	const router = useRouter();
@@ -57,7 +57,7 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 						}}
 					>
 						{
-							!!settings.siteLogo.length &&
+							!!settings?.siteLogo.length &&
 								<Box
 									width='50px'
 									mr='1rem'
@@ -66,6 +66,7 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 								</Box>
 						}
 						<Text
+							className={headerFont}
 							as='h2'
 							sx={{ ':hover': { cursor: 'pointer' } }}
 							fontWeight='600'
@@ -103,7 +104,7 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 						}}
 					>
 						{
-							!!settings.siteLogo.length &&
+							!!settings?.siteLogo.length &&
 								<Box
 									width='50px'
 									mr='1rem'
@@ -112,6 +113,7 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 								</Box>
 						}
 						<Text
+							className={headerFont}
 							as='h2'
 							sx={{ ':hover': { cursor: 'pointer' } }}
 							fontWeight='600'

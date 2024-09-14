@@ -117,7 +117,11 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 						})
 					}
 				}
-				if (modelPaths[key].instance === 'Array') {
+				if (
+					modelPaths[key].instance === 'Array' && 
+					//@ts-ignore
+					modelPaths[key]?.caster?.options.ref
+				) {
 					for (let i = 0; i < data[key].length; i++) {
 						await models[
 							//@ts-ignore

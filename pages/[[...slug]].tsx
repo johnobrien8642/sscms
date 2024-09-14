@@ -1,4 +1,5 @@
 import React from 'react';
+import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Header from '@core/components/system/Header';
 import Templates from '@core/components/system/Templates';
@@ -18,7 +19,7 @@ export type SlugPropsType = {
 	settings: any;
 }
 
-const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
+const Home: NextPage<AppProps> = ({ page, headerPages, settings, garamondClassName }) => {
 	if (!page) {
 		return <></>
 	} else {
@@ -49,6 +50,7 @@ const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
 				<Header
 					pages={pHeaderPages}
 					settings={pSettings}
+					headerFont={garamondClassName}
 				/>
 				{pSettings?.location &&
 					<Tag

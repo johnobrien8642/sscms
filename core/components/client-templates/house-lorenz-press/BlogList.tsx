@@ -6,6 +6,7 @@ import MyImage from '@core/components/system/Image';
 import Pagination from '@core/components/system/Pagination';
 import SubscribeForm from '@core/components/system/SubscribeForm';
 import { BasePropsType } from '@core/components/types/prop_types';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const BlogList = ({ template }: BasePropsType) => {
 	const topicType = template.blogListTopic;
@@ -59,36 +60,41 @@ const BlogList = ({ template }: BasePropsType) => {
 			flexDir='column'
 			height='100%'
 		>
-			{blogPosts.map(post => {
-				return <Flex
-					key={post._id}
-					flexDir='column'
-					justifyContent='normal'
-					height='fit-content'
-					width='100%'
-					maxW={maxW}
-					mb='5%'
+			{blogPosts.map((post, i) => {
+				return <ScrollAnimation
+					animateIn={i % 2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
+					animateOnce={true}
 				>
-					{
-						!!post.mainImage.length && 
-							<MyImage
-								image={post.mainImage[0]} 
-								maxW={maxW}
-								cursor='normal'
-							/>
-					}
-					<Box
-						mt='1rem'
+					<Flex
+						key={post._id}
+						flexDir='column'
+						justifyContent='normal'
+						height='fit-content'
+						width='100%'
+						maxW={maxW}
+						mb='5%'
 					>
-						<Link
-							href={process.env.NEXT_PUBLIC_URL as string + post.folderHref as string}
+						{
+							!!post.mainImage.length && 
+								<MyImage
+									image={post.mainImage[0]} 
+									maxW={maxW}
+									cursor='normal'
+								/>
+						}
+						<Box
+							mt='1rem'
 						>
-							<Heading>{post.title}</Heading>
-						</Link>
-						<Text mt='.5rem'>{post.subHeading}</Text>
-						<Text mt='1rem' fontSize='.8rem'>{dateFormat(new Date(post.publishedAt), "dddd, mmmm dS, yyyy")}</Text>
-					</Box>
-				</Flex>
+							<Link
+								href={process.env.NEXT_PUBLIC_URL as string + post.folderHref as string}
+							>
+								<Heading>{post.title}</Heading>
+							</Link>
+							<Text mt='.5rem'>{post.subHeading}</Text>
+							<Text mt='1rem' fontSize='.8rem'>{dateFormat(new Date(post.publishedAt), "dddd, mmmm dS, yyyy")}</Text>
+						</Box>
+					</Flex>
+				</ScrollAnimation>
 			})}
 		</Flex>
 		<SubscribeForm />
