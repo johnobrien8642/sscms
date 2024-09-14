@@ -60,7 +60,13 @@ const MyImage = ({
 			}
 		}}
 	>
-
+		<Image
+			sizes='30w, (min-width: 520px) 65vw, (min-width: 1200px) 90vw'
+			alt={image.title || 'alt text'}
+			width={image.assetDimensions[0]}
+			height={image.assetDimensions[1]}
+			src={process.env.NEXT_PUBLIC_CLOUDFRONT_URL as string + image.assetKey}
+		/>
 	</Box>
 }
 
