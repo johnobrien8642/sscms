@@ -51,7 +51,9 @@ const optionsObj: { [key: string]: OptionsType } = {
 	pageBodyBgImage: {
 		formTitle: 'Page Body Bg Image',
 		singleChoice: true,
-		filterType: true
+		filterType: true,
+		cloneForDraft: false,
+		ref: 'Assets'
 	},
 	isNestedChild: {
 		hide: true,
