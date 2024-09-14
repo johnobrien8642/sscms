@@ -11,8 +11,8 @@ const SubscribeForm = ({
 }) => {
 	return <Script 
 		async 
-		src="https://eocampaign1.com/form/5b9cae6a-67dc-11ef-9947-b520a5a86134.js" 
-		data-form="5b9cae6a-67dc-11ef-9947-b520a5a86134"
+		src={src}
+		data-form={dataForm}
 	></Script>
 };
 

@@ -68,7 +68,10 @@ const BlogDetail = ({ page }: { page: BlogPostType }) => {
 			}
 		</Flex>
 		<Templates templates={page.templatesIds} width={{ base: '100%', md: '60%' }} />
-		<SubscribeForm />
+		<SubscribeForm 
+			src={"https://eocampaign1.com/form/3dcc5fd4-72db-11ef-9dfb-0d50689671f2.js"}
+			dataForm={"3dcc5fd4-72db-11ef-9dfb-0d50689671f2"}
+		/>
 		<Flex
 			w={{ base: '100%', md: '60%' }}
 			m='auto'
