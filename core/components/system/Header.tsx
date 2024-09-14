@@ -57,7 +57,7 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 						}}
 					>
 						{
-							!!settings.siteLogo.length &&
+							!!settings?.siteLogo.length &&
 								<Box
 									width='50px'
 									mr='1rem'
@@ -103,7 +103,7 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 						}}
 					>
 						{
-							!!settings.siteLogo.length &&
+							!!settings?.siteLogo.length &&
 								<Box
 									width='50px'
 									mr='1rem'
