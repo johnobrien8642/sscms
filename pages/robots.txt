@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/manage-pages
+Disallow: /admin/auth/repl
+Sitemap: http://www.houselorenzpress.com/sitemapJS.xml
