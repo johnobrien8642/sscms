@@ -12,16 +12,16 @@ export const config = {
 
 export default async (req: NextApiRequest, res: NextApiResponse) => {
 	await connectDb();
-	const { _id } = req.query;
+	const { publishedAt } = req.query;
     const prev = 
 		await BlogPost
-			.findOne({ $and: [{ _id: { $lt: _id } }, { _id: { $ne: Types.ObjectId(_id) } }]  })
-			.sort('-createdAt')
-			.select('title folderHref');
+			.findOne({ publishedAt: { $lt: new Date(publishedAt as string) }, isPublished: true })
+			.sort('publishedAt')
+			.select('title folderHref publishedAt');
     const next = 
 		await BlogPost
-		.findOne({ $and: [{ _id: { $gt: _id } }, { _id: { $ne: Types.ObjectId(_id) } }]  })
-		.sort('createdAt')
-		.select('title folderHref');
+		.findOne({ publishedAt: { $gt: new Date(publishedAt as string) }, isPublished: true })
+		.sort('publishedAt')
+		.select('title folderHref publishedAt');
     return res.status(200).json({ prev, next });
 };
