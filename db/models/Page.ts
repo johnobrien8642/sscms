@@ -174,7 +174,7 @@ const PageSchema = new Schema({
 				ref: 'Assets'
 			}
 		],
-		...optionsObj.siteBodyBgImage
+		...optionsObj.pageBodyBgImage
 	},
 	isNestedChild: {
 		type: Boolean,
