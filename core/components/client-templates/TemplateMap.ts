@@ -30,6 +30,7 @@ import MN_EmbedComp from './miserable-nomad/Embed';
 import MN_BlogList from './miserable-nomad/BlogList';
 import MN_SideBySide from './miserable-nomad/SideBySide';
 import MN_SinglePhotoHighlight from './miserable-nomad/SinglePhotoHighlight';
+import MN_BlogDetail from "./miserable-nomad/BlogDetail";
 // house-lorenz-press
 import HLP_PhotoList from "./house-lorenz-press/PhotoList";
 import HLP_VideoPlayer from "./house-lorenz-press/VideoPlayer";
@@ -45,6 +46,7 @@ import HLP_EmbedComp from './house-lorenz-press/Embed';
 import HLP_BlogList from './house-lorenz-press/BlogList';
 import HLP_SideBySide from './house-lorenz-press/SideBySide';
 import HLP_SinglePhotoHighlight from './house-lorenz-press/SinglePhotoHighlight';
+import HLP_BlogDetail from "./house-lorenz-press/BlogDetail";
 // blue-grey-card-theory
 import BGCT_PhotoList from "./blue-grey-card-theory/PhotoList";
 import BGCT_VideoPlayer from "./blue-grey-card-theory/VideoPlayer";
@@ -60,6 +62,7 @@ import BGCT_EmbedComp from './blue-grey-card-theory/Embed';
 import BGCT_BlogList from './blue-grey-card-theory/BlogList';
 import BGCT_SideBySide from './blue-grey-card-theory/SideBySide';
 import BGCT_SinglePhotoHighlight from './blue-grey-card-theory/SinglePhotoHighlight';
+import BGCT_BlogDetail from "./blue-grey-card-theory/BlogDetail";
 // developer-portfolio
 import DP_PhotoList from "./developer-portfolio/PhotoList";
 import DP_VideoPlayer from "./developer-portfolio/VideoPlayer";
@@ -104,7 +107,8 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'Embed': MN_EmbedComp,
 		'BlogList': MN_BlogList,
 		'SinglePhotoHighlight': MN_SinglePhotoHighlight,
-		'SideBySide': MN_SideBySide
+		'SideBySide': MN_SideBySide,
+		'BlogDetail': MN_BlogDetail
 	},
 	'house-lorenz-press': {
 		'PhotoList': HLP_PhotoList,
@@ -120,7 +124,8 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'Embed': HLP_EmbedComp,
 		'BlogList': HLP_BlogList,
 		'SinglePhotoHighlight': HLP_SinglePhotoHighlight,
-		'SideBySide': HLP_SideBySide
+		'SideBySide': HLP_SideBySide,
+		'BlogDetail': HLP_BlogDetail
 	},
 	'blue-grey-card-theory': {
 		'PhotoList': BGCT_PhotoList,
@@ -136,7 +141,8 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'Embed': BGCT_EmbedComp,
 		'BlogList': BGCT_BlogList,
 		'SinglePhotoHighlight': BGCT_SinglePhotoHighlight,
-		'SideBySide': BGCT_SideBySide
+		'SideBySide': BGCT_SideBySide,
+		'BlogDetail': BGCT_BlogDetail
 	},
 	'developer-portfolio': {
 		'PhotoList': DP_PhotoList,

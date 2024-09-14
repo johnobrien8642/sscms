@@ -12,7 +12,7 @@ const BlogDetail = ({ page }: { page: BlogPostType }) => {
 	useEffect(() => {
 		getPrevAndNextPosts()
 		async function getPrevAndNextPosts() {
-			const res = await fetch(`/api/get_blog_detail_next_prev/?_id=${page._id}`,
+			const res = await fetch(`/api/get_blog_detail_next_prev/?publishedAt=${page.publishedAt}`,
 				{
 					method: 'GET',
 					headers: {

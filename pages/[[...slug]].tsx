@@ -9,9 +9,9 @@ import Page, { PageType } from '@db/models/Page';
 import BlogPost, { BlogPostType } from '@db/models/BlogPost';
 import { GetStaticProps, NextPage } from 'next';
 import Settings, { SettingsType } from '@db/models/Settings';
-import BlogDetail from '@core/components/client-templates/personal-site/BlogDetail';
 import models from '@db/lib';
 import Draft from '@db/models/Draft';
+import TemplateMap from '@core/components/client-templates/TemplateMap';
 
 export type SlugPropsType = {
 	page: string;
@@ -19,7 +19,8 @@ export type SlugPropsType = {
 	settings: any;
 }
 
-const Home: NextPage<AppProps> = ({ page, headerPages, settings, garamondClassName }) => {
+const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
+	const BlogDetail = TemplateMap[process.env.NEXT_PUBLIC_SITE_FOLDER as string]['BlogDetail'];
 	if (!page) {
 		return <></>
 	} else {
@@ -50,7 +51,6 @@ const Home: NextPage<AppProps> = ({ page, headerPages, settings, garamondClassNa
 				<Header
 					pages={pHeaderPages}
 					settings={pSettings}
-					headerFont={garamondClassName}
 				/>
 				{pSettings?.location &&
 					<Tag
