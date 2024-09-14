@@ -137,6 +137,11 @@ const Form = ({
 			className="form container" 
 			my={{ base: '0', lg: bypassModal ? '5rem' : '0' }}
 			overflowY={{ base: 'scroll', lg: 'hidden' }}
+			sx={{
+				'form': {
+					height: '100vh'
+				}
+			}}
 		>
 			<Heading
 				minH='55px'

@@ -117,7 +117,7 @@ export const getStaticPaths = async () => {
 	}
 	return {
 		paths: [...paths, ...paths2],
-		fallback: false
+		fallback: 'blocking'
 	}
 }
 // Need to refactor out of pageManager
