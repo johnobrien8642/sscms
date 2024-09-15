@@ -380,7 +380,8 @@ const ListFieldItem = ({
 												update: true,
 												parentFieldTitle: title,
 												draftForId: item._id,
-												activeBeingDrafted: item.isActiveDraft
+												activeBeingDrafted: item.isActiveDraft,
+												publishedBeingEdited: item.isPublished
 											}
 											newData.active = draft._id;
 											newData.insideDraftsModal = !!insideDraftsModal;

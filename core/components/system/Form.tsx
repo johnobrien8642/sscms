@@ -230,7 +230,7 @@ const Form = ({
 
 					data[formTitle] = dataRef;
 					const res2 = await fetch(`/api/handle_item`, {
-						method: data[formTitle].update ? 'PUT' : 'POST',
+						method: data[formTitle].update &&  !data[formTitle].saveDraft ? 'PUT' : 'POST',
 						headers: {
 							Accept: 'application/json',
 							'Content-Type': 'application/json'
@@ -390,7 +390,7 @@ const Form = ({
 											setOpenModal(true);
 										}}
 									>
-										{data[formTitle]?.isPublished ? 'Unpublish' : 'Save and Publish'}
+										{data[formTitle]?.publishedBeingEdited ? 'Unpublish' : 'Save and Publish'}
 									</Button>
 									<Modal
 										isOpen={openModal}
@@ -417,7 +417,7 @@ const Form = ({
 															onClick={() => {
 																setData(prev => {
 																	const newData = cloneDeep(prev);
-																	if (data[formTitle].isPublished) {
+																	if (data[formTitle].publishedBeingEdited) {
 																		newData[formTitle].isPublished = false;
 																	} else {
 																		newData[formTitle].isActiveDraft = true;
@@ -430,7 +430,7 @@ const Form = ({
 																setOpenModal(false);
 															}}
 														>
-															Confirm {data[formTitle]?.isPublished ? 'Unpublish' : 'Publish'}
+															Confirm {data[formTitle]?.publishedBeingEdited ? 'Unpublish' : 'Publish'}
 														</Button>
 														<Button
 															colorScheme='blue'
