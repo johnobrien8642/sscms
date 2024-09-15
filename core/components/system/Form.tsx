@@ -419,7 +419,7 @@ const Form = ({
 															onClick={() => {
 																setData(prev => {
 																	const newData = cloneDeep(prev);
-																	if (data[formTitle].isPublished) {
+																	if (data[formTitle].publishedBeingEdited) {
 																		newData[formTitle].isPublished = false;
 																	} else {
 																		newData[formTitle].isActiveDraft = true;
@@ -432,7 +432,7 @@ const Form = ({
 																setOpenModal(false);
 															}}
 														>
-															Confirm {data[formTitle]?.isPublished ? 'Unpublish' : 'Publish'}
+															Confirm {data[formTitle]?.publishedBeingEdited ? 'Unpublish' : 'Publish'}
 														</Button>
 														<Button
 															colorScheme='blue'
