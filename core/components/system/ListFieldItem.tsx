@@ -227,7 +227,7 @@ const ListFieldItem = ({
 				}
 				{
 					(item.typeName === 'BlogPost') && 
-						item?.mainImage?.length &&
+						!!item?.mainImage?.length &&
 							<Box
 								mx='1rem'
 								width='100'
