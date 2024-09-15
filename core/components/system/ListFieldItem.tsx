@@ -227,7 +227,7 @@ const ListFieldItem = ({
 				}
 				{
 					(item.typeName === 'BlogPost') && 
-						item?.mainImage?.length &&
+						!!item?.mainImage?.length &&
 							<Box
 								mx='1rem'
 								width='100'
@@ -380,7 +380,8 @@ const ListFieldItem = ({
 												update: true,
 												parentFieldTitle: title,
 												draftForId: item._id,
-												activeBeingDrafted: item.isActiveDraft
+												activeBeingDrafted: item.isActiveDraft,
+												publishedBeingEdited: item.isPublished
 											}
 											newData.active = draft._id;
 											newData.insideDraftsModal = !!insideDraftsModal;

@@ -4,7 +4,7 @@ import { BasePropsType } from '@core/components/types/prop_types';
 import MyImage from '@core/components/system/Image';
 import { useBreakpointValue } from '@chakra-ui/react';
 
-const SideBySide = ({ template }: BasePropsType) => {
+const SideBySideTextBlock = ({ template }: BasePropsType) => {
 	const desktop = useBreakpointValue({
 		base: false,
 		md: true
@@ -35,4 +35,4 @@ const SideBySide = ({ template }: BasePropsType) => {
 	)
 }
 
-export default SideBySide;
+export default SideBySideTextBlock;

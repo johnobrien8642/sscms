@@ -44,7 +44,8 @@ import HLP_About from "./house-lorenz-press/About";
 import HLP_OneTimePatrons from "./house-lorenz-press/OneTimePatrons";
 import HLP_EmbedComp from './house-lorenz-press/Embed';
 import HLP_BlogList from './house-lorenz-press/BlogList';
-import HLP_SideBySide from './house-lorenz-press/SideBySide';
+import HLP_SideBySideTextBlock from './house-lorenz-press/SideBySideTextBlock';
+import HLP_SideBySideHighlight from './house-lorenz-press/SideBySideHighlight';
 import HLP_SinglePhotoHighlight from './house-lorenz-press/SinglePhotoHighlight';
 import HLP_BlogDetail from "./house-lorenz-press/BlogDetail";
 // blue-grey-card-theory
@@ -124,7 +125,8 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'Embed': HLP_EmbedComp,
 		'BlogList': HLP_BlogList,
 		'SinglePhotoHighlight': HLP_SinglePhotoHighlight,
-		'SideBySide': HLP_SideBySide,
+		'SideBySideTextBlock': HLP_SideBySideTextBlock,
+		'SideBySideHighlight': HLP_SideBySideHighlight,
 		'BlogDetail': HLP_BlogDetail
 	},
 	'blue-grey-card-theory': {
