@@ -3,13 +3,11 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { extendTheme } from '@chakra-ui/react';
-import { IBM_Plex_Serif, EB_Garamond } from 'next/font/google'
-const inter = IBM_Plex_Serif({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
-const garamond = EB_Garamond({ subsets: ['latin'], weight: ['400', '500', '600', '700'] });
 import React, { useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "next-auth/react"
 import { SiteSettingsProvider } from '@core/contexts/useSiteSettings';
+import { inter } from '@util/fonts';
 import '@util/styles.css';
 
 const MyApp = ({ Component, pageProps }: AppProps)  => {
@@ -53,7 +51,6 @@ const MyApp = ({ Component, pageProps }: AppProps)  => {
 		}
 	}, [pageProps]);
 	const theme = extendTheme(themeObj);
-	pageProps.garamondClassName = garamond.className;
 	return (
 		<SessionProvider session={session}>
 			<SiteSettingsProvider value={{ settings }}>

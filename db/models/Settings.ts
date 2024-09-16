@@ -46,15 +46,15 @@ const optionsObj: { [key: string]: OptionsType } = {
 		default: '#Eeeeee',
 		formTitle: 'Site Font Color (Light)'
 	},
-	bodyFontFamily: {
-		formTitle: 'Body Font Family'
-	},
-	headingFontFamily: {
-		formTitle: 'Heading Font Family'
-	},
-	monoFontFamily: {
-		formTitle: 'Mono Font Family'
-	},
+	// bodyFontFamily: {
+	// 	formTitle: 'Body Font Family'
+	// },
+	// headingFontFamily: {
+	// 	formTitle: 'Heading Font Family'
+	// },
+	// monoFontFamily: {
+	// 	formTitle: 'Mono Font Family'
+	// },
 	headerNestedDropdown: {
 		formTitle: 'Header Nested Dropdown?',
 		default: false
@@ -137,18 +137,18 @@ const SettingsSchema = new Schema({
 		type: String,
 		...optionsObj.siteFontColor_light
 	},
-	bodyFontFamily: {
-		type: String,
-		...optionsObj.bodyFontFamily
-	},
-	headingFontFamiy: {
-		type: String,
-		...optionsObj.headingFontFamily
-	},
-	monoFontFamily: {
-		type: String,
-		...optionsObj.monoFontFamily
-	},
+	// bodyFontFamily: {
+	// 	type: String,
+	// 	...optionsObj.bodyFontFamily
+	// },
+	// headingFontFamiy: {
+	// 	type: String,
+	// 	...optionsObj.headingFontFamily
+	// },
+	// monoFontFamily: {
+	// 	type: String,
+	// 	...optionsObj.monoFontFamily
+	// },
 	headerNestedDropdown: {
 		type: Boolean,
 		...optionsObj.headerNestedDropdown

@@ -180,33 +180,34 @@ const FormPage = ({
 					rounded='none'
 					overflow='hidden'
 				>
-					<ModalHeader></ModalHeader>
-					<ModalCloseButton 
-						onClick={async () => {
-							if (
-								data[formTitle].schemaName === 'Page' ||
-									data[formTitle].schemaName === 'BlogPost'
-							) {
-								await fetch('/api/handle_draft', {
-									method: 'DELETE',
-									headers: {
-										Accept: 'application/json',
-										'Content-Type': 'application/json'
-									},
-									body: JSON.stringify({
-										data: {
-											...formCache[formCache.draftId]
+					<ModalHeader>
+						<ModalCloseButton 
+							onClick={async () => {
+								if (
+									data[formTitle].schemaName === 'Page' ||
+										data[formTitle].schemaName === 'BlogPost'
+								) {
+									await fetch('/api/handle_draft', {
+										method: 'DELETE',
+										headers: {
+											Accept: 'application/json',
+											'Content-Type': 'application/json'
+										},
+										body: JSON.stringify({
+											data: {
+												...formCache[formCache.draftId]
 
-										}
-									}),
-									cache: 'no-store'
-								});
-							}
-							setTopLevelModal(false);
-							setData(dataInitialValue);
-							setFormCache({});
-						}}
-					/>
+											}
+										}),
+										cache: 'no-store'
+									});
+								}
+								setTopLevelModal(false);
+								setData(dataInitialValue);
+								setFormCache({});
+							}}
+						/>
+					</ModalHeader>
 					<Form 
 						formTitleProp={formTitle} 
 						pageManagerKey={pageManagerKey}
