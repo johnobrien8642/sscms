@@ -66,7 +66,8 @@ const MyApp = ({ Component, pageProps }: AppProps)  => {
 							beforeSend={(e) => {
 								if (
 									e.url.includes('auth') ||
-										e.url.includes('admin')
+										e.url.includes('admin') ||
+											e.url.includes('draft')
 								) {
 									return null;
 								}
