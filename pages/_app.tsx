@@ -64,7 +64,8 @@ const MyApp: AppType<{ admin: boolean; settings: any; session: any; }> = ({ Comp
 							beforeSend={(e) => {
 								if (
 									e.url.includes('auth') ||
-										e.url.includes('admin')
+										e.url.includes('admin') ||
+											e.url.includes('draft')
 								) {
 									return null;
 								}
