@@ -35,6 +35,7 @@ const Form = ({
 	revalidateAll?: boolean;
 	setRefetch: React.Dispatch<React.SetStateAction<number>>;
 }) => {
+	const gridContEl = useRef(null);
 	const [fieldArr, setFieldArr] = useState<[string, any][]>([]);
 	const [parentDoc, setParentDoc] = useState<any | null>(null);
 	const [openModal, setOpenModal] = useState(false);
@@ -299,6 +300,7 @@ const Form = ({
 					gap='2%'
 					position='relative'
 					height='100vh'
+					ref={gridContEl}
 				>
 
 					<Box
@@ -510,6 +512,7 @@ const Form = ({
 									schemaName={formCache[formCache.draftId].schemaName} 
 									desktopView={desktopView}
 									setDesktopView={setDesktopView}
+									gridContEl={gridContEl}
 								/>
 					}
 					{

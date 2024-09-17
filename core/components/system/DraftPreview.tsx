@@ -8,12 +8,14 @@ const DraftPreview = ({
 	draftId,
 	schemaName,
 	desktopView,
-	setDesktopView
+	setDesktopView,
+	gridContEl
 }: {
 	draftId: string;
 	schemaName: string;
 	desktopView: boolean;
-	setDesktopView: React.Dispatch<React.SetStateAction<boolean>>
+	setDesktopView: React.Dispatch<React.SetStateAction<boolean>>;
+	gridContEl: React.RefObject<HTMLDivElement>;
 }) => {
 	const iframeEl = useRef<HTMLIFrameElement | null>(null);
 	const iframeContEl = useRef<HTMLDivElement | null>(null);
@@ -55,7 +57,13 @@ const DraftPreview = ({
 			height='100%'
 			scrolling={true}
 			forwardRef={iframeEl}
-			style={{ transformOrigin: '0px 0px', transform: desktop ? 'scale(.6)' : 'scale(1)', width: desktop && desktopView ? '1200px' : '100%', height: !desktop ? '600px' : '100%'}}
+			style={{ 
+				transformOrigin: '0px 0px',
+				//@ts-ignore
+				transform: desktop ? `scale(${(gridContEl.current?.offsetWidth / 2) / 1400})` : 'scale(1)', 
+				width: desktop && desktopView ? '1400px' : '100%', 
+				height: !desktop ? '600px' : '100%'
+			}}
 			onLoad={(e) => {
 				setLoading(false);
 			}}
