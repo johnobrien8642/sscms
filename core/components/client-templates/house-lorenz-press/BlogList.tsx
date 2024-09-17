@@ -62,11 +62,11 @@ const BlogList = ({ template }: BasePropsType) => {
 		>
 			{blogPosts.map((post, i) => {
 				return <ScrollAnimation
+					key={post._id}
 					animateIn={i % 2 === 0 ? 'fadeInRight' : 'fadeInLeft'}
 					animateOnce={true}
 				>
 					<Flex
-						key={post._id}
 						flexDir='column'
 						justifyContent='normal'
 						height='fit-content'
