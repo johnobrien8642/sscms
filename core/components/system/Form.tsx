@@ -242,7 +242,7 @@ const Form = ({
 								pageManagerKey,
 								revalidateAll
 							},
-							folderHref: data[formTitle]?.folderHref
+							folderHref: formCache[formCache?.draftId ?? '']?.folderHref ?? data[formTitle]?.folderHref
 						}),
 						cache: 'no-store'
 					});
