@@ -161,7 +161,14 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			if (!saveDraft && !doesNotDraft && (formTitleRef === 'Page' || formTitleRef === 'BlogPost')) {
 				await models[formTitleRef].deleteOne({ _id: _id });
 			}
-			return res.status(200).json({ success: true, _id: _id, parent: parentItem, parentFieldTitleRef, savedItem: { _id: _id } });
+			return res.status(200).json({ 
+				success: true, 
+				_id: _id, 
+				parent: parentItem, 
+				parentFieldTitleRef, 
+				savedItem: { _id: _id }, 
+				revalidated: true 
+			});
 		} catch (err: any) {
 			return res.status(500).json({ success: false, errorMessage: err.message });
 		}
