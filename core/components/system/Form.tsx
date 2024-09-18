@@ -441,6 +441,7 @@ const Form = ({
 														<Button
 															backgroundColor={!data[formTitle]?.isPublished ? 'var(--chakra-colors-red-400)' : 'var(--chakra-colors-blue-400)'}
 															mr={3}
+															color='white'
 															type='submit'
 															form='sscms-form'
 															isDisabled={formSelected.loading}
@@ -452,6 +453,7 @@ const Form = ({
 														</Button>
 														<Button
 															colorScheme='blue'
+															color='white'
 															mr={3}
 															onClick={() => {
 																setOpenModal(false);
