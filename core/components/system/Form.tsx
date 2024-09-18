@@ -402,22 +402,24 @@ const Form = ({
 									>
 										Save and Publish
 									</Button>
-									<Button
-										isDisabled={formSelected.loading}
-										mr={3}
-										backgroundColor='var(--chakra-colors-red-400)'
-										color='white'
-										onClick={() => {
-											setData(prev => {
-												const newData = cloneDeep(prev);
-												newData[formTitle].isPublished = false;
-												return newData;
-											})
-											setOpenModal(true);
-										}}
-									>
-										Unpublish
-									</Button>
+									{data[formTitle].isPublished &&
+										<Button
+											isDisabled={formSelected.loading}
+											mr={3}
+											backgroundColor='var(--chakra-colors-red-400)'
+											color='white'
+											onClick={() => {
+												setData(prev => {
+													const newData = cloneDeep(prev);
+													newData[formTitle].isPublished = false;
+													return newData;
+												})
+												setOpenModal(true);
+											}}
+										>
+											Unpublish
+										</Button>
+									}
 									<Modal
 										isOpen={openModal}
 										onClose={() => {
@@ -436,6 +438,7 @@ const Form = ({
 													<Center>
 														<Button
 															backgroundColor={!data[formTitle]?.isPublished ? 'var(--chakra-colors-red-400)' : 'var(--chakra-colors-blue-400)'}
+															color='white'
 															mr={3}
 															type='submit'
 															form='sscms-form'
@@ -448,6 +451,7 @@ const Form = ({
 														</Button>
 														<Button
 															colorScheme='blue'
+															color='white'
 															mr={3}
 															onClick={() => {
 																setOpenModal(false);
