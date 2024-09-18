@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { revalidatePath } from 'next/cache';
 import connectDb from '@db/lib/mongodb';
 import models from '@db/lib/index';
 import Page, { PageType } from '@db/models/Page';
@@ -90,7 +91,8 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				data.folderHref = (parentItem.folderHref === '/' ? '' : parentItem.folderHref) + data.folderHref;
 			}
 			try {
-				await res.revalidate(folderHref);
+				revalidatePath(folderHref)
+				// await res.revalidate(folderHref);
 			} catch (err) {
 				console.log('Revalidate error', err)
 			}
