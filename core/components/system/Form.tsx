@@ -144,11 +144,14 @@ const Form = ({
 				}
 			}}
 		>
-			<Heading
-				minH='55px'
-			>
-				{formCache[formCache?.active]?.formTitle && resolveHeading()}
-			</Heading>
+			{
+				formCache[formCache?.active]?.formTitle && 
+					<Heading
+						minH='55px'
+					>
+						{resolveHeading()}
+					</Heading>
+			}
 			{formCache[formCache?.active]?.activeBeingDrafted && <Text color='green' >Active Draft</Text>}
 			<form
 				id='sscms-form'
