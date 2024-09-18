@@ -409,7 +409,7 @@ const Form = ({
 									>
 										Save and Publish
 									</Button>
-									{data[formTitle].isPublished &&
+									{data[formTitle]?.publishedBeingEdited &&
 										<Button
 											isDisabled={formSelected.loading}
 											mr={3}
