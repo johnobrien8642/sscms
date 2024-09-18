@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Head from 'next/head';
 import Header from '@core/components/system/Header';
 import Templates from '@core/components/system/Templates';
@@ -10,20 +10,35 @@ import { GetStaticProps, NextPage } from 'next';
 import Settings, { SettingsType } from '@db/models/Settings';
 import models from '@db/lib';
 import Draft from '@db/models/Draft';
+import TemplateMap from '@core/components/client-templates/TemplateMap';
 
 export type SlugPropsType = {
 	page: string;
-	headerPages: string;
 	settings: any;
 }
 
-const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
+const Home: NextPage<SlugPropsType> = ({ page, settings }) => {
 	const BlogDetail = TemplateMap[process.env.NEXT_PUBLIC_SITE_FOLDER as string]['BlogDetail'];
+	const [headerLinks, setHeaderLinks] = useState();
+	useEffect(() => {
+		handleGetHeaderLinks();
+		async function handleGetHeaderLinks() {
+			const res = await fetch('/api/get_header_links', {
+				method: 'GET',
+				headers: {
+					Accept: 'application/json',
+					'Content-Type': 'application/json'
+				},
+				cache: 'no-store'
+			});
+			const { docs } = await res.json();
+			setHeaderLinks(docs)
+		}
+	}, []);
 	if (!page) {
 		return <></>
 	} else {
 		const pPage: PageType | BlogPostType = JSON.parse(page);
-		const pHeaderPages: PageType[] = JSON.parse(headerPages);
 		const pSettings: SettingsType = JSON.parse(settings);
 		return (
 			<>
@@ -47,7 +62,7 @@ const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
 					}
 				</Head>
 				<Header
-					pages={pHeaderPages}
+					pages={headerLinks ?? []}
 					settings={pSettings}
 				/>
 				{pSettings?.location &&
@@ -124,14 +139,6 @@ export const getStaticPaths = async () => {
 export const getStaticProps: GetStaticProps<SlugPropsType> = async (context) => {
 	await connectDb();
 	let filter: any = {};
-	const headerPages =
-		await Page
-			.find({
-				showInNavigation: true,
-				isPublished: true
-			})
-			.sort('formOrder')
-			.select('_id title folderHref');
 	const settings =
 		await Settings
 			.findOne({})
@@ -244,8 +251,7 @@ export const getStaticProps: GetStaticProps<SlugPropsType> = async (context) => 
 		return {
 			props: {
 				settings: JSON.stringify(settings),
-				page: JSON.stringify(page),
-				headerPages: JSON.stringify(headerPages)
+				page: JSON.stringify(page)
 			}
 		};
 	}
