@@ -389,10 +389,34 @@ const Form = ({
 										backgroundColor='var(--chakra-colors-blue-400)'
 										color='white'
 										onClick={() => {
+											setData(prev => {
+												const newData = cloneDeep(prev);
+												newData[formTitle].isActiveDraft = true;
+												newData[formTitle].isPublished = true;
+												newData[formTitle].publishedAt = new Date();
+												newData[formTitle].updateAllDraftsForPublish = true;
+												return newData;
+											})
 											setOpenModal(true);
 										}}
 									>
-										{data[formTitle]?.publishedBeingEdited ? 'Unpublish' : 'Save and Publish'}
+										Save and Publish
+									</Button>
+									<Button
+										isDisabled={formSelected.loading}
+										mr={3}
+										backgroundColor='var(--chakra-colors-red-400)'
+										color='white'
+										onClick={() => {
+											setData(prev => {
+												const newData = cloneDeep(prev);
+												newData[formTitle].isPublished = false;
+												return newData;
+											})
+											setOpenModal(true);
+										}}
+									>
+										Unpublish
 									</Button>
 									<Modal
 										isOpen={openModal}
@@ -411,28 +435,16 @@ const Form = ({
 												>
 													<Center>
 														<Button
-															colorScheme='blue'
+															backgroundColor={!data[formTitle]?.isPublished ? 'var(--chakra-colors-red-400)' : 'var(--chakra-colors-blue-400)'}
 															mr={3}
 															type='submit'
 															form='sscms-form'
 															isDisabled={formSelected.loading}
 															onClick={() => {
-																setData(prev => {
-																	const newData = cloneDeep(prev);
-																	if (data[formTitle].publishedBeingEdited) {
-																		newData[formTitle].isPublished = false;
-																	} else {
-																		newData[formTitle].isActiveDraft = true;
-																		newData[formTitle].isPublished = true;
-																		newData[formTitle].publishedAt = new Date();
-																		newData[formTitle].updateAllDraftsForPublish = true;
-																	}
-																	return newData;
-																})
 																setOpenModal(false);
 															}}
 														>
-															Confirm {data[formTitle]?.publishedBeingEdited ? 'Unpublish' : 'Publish'}
+															Confirm {!data[formTitle]?.isPublished ? 'Unpublish' : 'Publish'}
 														</Button>
 														<Button
 															colorScheme='blue'
