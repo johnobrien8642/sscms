@@ -252,8 +252,19 @@ const Form = ({
 						cache: 'no-store'
 					});
 					if (res2.ok) {
-						const data = await res2.json()
-						const { parent, parentFieldTitleRef, savedItem } = data;
+						await fetch(`/api/revalidate`, {
+							method: 'POST',
+							headers: {
+								Accept: 'application/json',
+								'Content-Type': 'application/json'
+							},
+							body: JSON.stringify({
+								path: formCache[formCache.draftId]?.folderHref ?? data[formTitle]?.folderHref
+							}),
+							cache: 'no-store'
+						});
+						const data2 = await res2.json()
+						const { parent, parentFieldTitleRef, savedItem } = data2;
 						const activeItem = formCache[formCache.active];
 						let previousFormTitle: string;
 						if (!activeItem?.previous && !bypassModal) {
