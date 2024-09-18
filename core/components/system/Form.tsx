@@ -234,7 +234,7 @@ const Form = ({
 
 					data[formTitle] = dataRef;
 					const res2 = await fetch(`/api/handle_item`, {
-						method: data[formTitle].update &&  !data[formTitle].saveDraft ? 'PUT' : 'POST',
+						method: data[formTitle].update || !data[formTitle].saveDraft ? 'PUT' : 'POST',
 						headers: {
 							Accept: 'application/json',
 							'Content-Type': 'application/json'
