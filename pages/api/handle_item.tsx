@@ -90,7 +90,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 				data.folderHref = (parentItem.folderHref === '/' ? '' : parentItem.folderHref) + data.folderHref;
 			}
 			try {
-				await res.revalidate(folderHref);
+				await res.revalidate(folderHref === '/' ? `/index.json` : folderHref);
 			} catch (err) {
 				console.log('Revalidate error', err)
 			}
