@@ -406,22 +406,24 @@ const Form = ({
 									>
 										Save and Publish
 									</Button>
-									<Button
-										isDisabled={formSelected.loading}
-										mr={3}
-										backgroundColor='var(--chakra-colors-red-400)'
-										color='white'
-										onClick={() => {
-											setData(prev => {
-												const newData = cloneDeep(prev);
-												newData[formTitle].isPublished = false;
-												return newData;
-											})
-											setOpenModal(true);
-										}}
-									>
-										Unpublish
-									</Button>
+									{data[formTitle].isPublished &&
+										<Button
+											isDisabled={formSelected.loading}
+											mr={3}
+											backgroundColor='var(--chakra-colors-red-400)'
+											color='white'
+											onClick={() => {
+												setData(prev => {
+													const newData = cloneDeep(prev);
+													newData[formTitle].isPublished = false;
+													return newData;
+												})
+												setOpenModal(true);
+											}}
+										>
+											Unpublish
+										</Button>
+									}
 									<Modal
 										isOpen={openModal}
 										onClose={() => {
