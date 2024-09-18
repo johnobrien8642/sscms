@@ -92,6 +92,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			try {
 				await res.revalidate(folderHref);
 			} catch (err) {
+				console.log('Revalidate error', err)
 			}
 			if (revalidateAll) {
 				const allPages = 
