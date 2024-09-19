@@ -12,6 +12,7 @@ import Link from "next/link";
 import { HamburgerIcon } from '@chakra-ui/icons';
 import MobileHeaderDrawers from "./MobileHeaderDrawers";
 import { PageType } from "@db/models/Page";
+import { siteFontsDefaultObj } from "@util/fonts";
 
 const MobileHeader = ({ pages }: { pages: PageType[] }) => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
@@ -26,6 +27,12 @@ const MobileHeader = ({ pages }: { pages: PageType[] }) => {
 		<Flex
 			ml='auto'
 			display={desktop ? 'none' : 'block'}
+			className={
+				siteFontsDefaultObj
+					?.['header']
+					?.[process.env.NEXT_PUBLIC_SITE_FOLDER ?? '']
+					?.className
+			}
 		>
 			<IconButton
 				ref={btnRef}

@@ -15,6 +15,7 @@ import Logout from './Logout';
 import MobileHeader from "./MobileHeader";
 import { PageType } from "@db/models/Page";
 import HeaderPanel from "./HeaderPanel";
+import { siteFontsDefaultObj } from "@util/fonts";
 
 const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 	const [loggedIn, setLoggedIn] = useState(false);
@@ -35,7 +36,15 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 
 	if (settings?.headerNestedDropdown) {
 		return (
-			<chakra.header id="header">
+			<chakra.header 
+				id="header" 
+				className={
+					siteFontsDefaultObj
+						?.['header']
+						?.[process.env.NEXT_PUBLIC_SITE_FOLDER ?? '']
+						?.className
+				}
+			>
 				<Flex
 					w="100%"
 					px="6"
@@ -81,7 +90,15 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 		);
 	} else {
 		return (
-			<chakra.header id="header">
+			<chakra.header 
+				id="header"
+				className={
+					siteFontsDefaultObj
+						?.['header']
+						?.[process.env.NEXT_PUBLIC_SITE_FOLDER ?? '']
+						?.className
+				}
+			>
 				<Flex
 					w="100%"
 					px="6"

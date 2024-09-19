@@ -7,7 +7,7 @@ import React, { useEffect } from 'react';
 import { Analytics } from "@vercel/analytics/react";
 import { SessionProvider } from "next-auth/react"
 import { SiteSettingsProvider } from '@core/contexts/useSiteSettings';
-import { inter } from '@util/fonts';
+import { siteFontsDefaultObj } from '@util/fonts';
 import '@util/styles.css';
 
 const MyApp = ({ Component, pageProps }: AppProps)  => {
@@ -56,7 +56,15 @@ const MyApp = ({ Component, pageProps }: AppProps)  => {
 			<SiteSettingsProvider value={{ settings }}>
 				<ChakraProvider theme={theme}>
 					<DndProvider backend={HTML5Backend}>
-						<main className={inter.className} style={{ overflow: 'auto', height: '100%' }}>
+						<main 
+							className={
+								siteFontsDefaultObj
+									?.['body']
+									?.[process.env.NEXT_PUBLIC_SITE_FOLDER ?? '']
+									?.className
+							} 
+							style={{ overflow: 'auto', height: '100%' }}
+						>
 							<Component {...pageProps} />
 						</main>
 						<Analytics 
