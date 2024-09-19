@@ -23,7 +23,9 @@ const MobileHeaderDrawers = ({
 }) => {
 	const router = useRouter();
 	return (
-		<Flex>
+		<Flex
+			width='100%'
+		>
 			<Drawer
 				isOpen={isOpen}
 				onClose={onClose}
@@ -32,6 +34,7 @@ const MobileHeaderDrawers = ({
 				<DrawerContent
 					backgroundColor='var(--chakra-colors-chakra-body-bg)'
 					alignItems="center"
+					width='100%'
 				>
 					<DrawerCloseButton alignSelf="end" />
 					<DrawerHeader>
@@ -54,7 +57,11 @@ const MobileHeaderDrawers = ({
 							</Text>
 						</Button>
 					</DrawerHeader>
-					<DrawerBody>{children}</DrawerBody>
+					<DrawerBody
+						width='100%'
+					>
+						{children}
+					</DrawerBody>
 				</DrawerContent>
 			</Drawer>
 		</Flex>

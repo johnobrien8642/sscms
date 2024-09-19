@@ -5,7 +5,8 @@ import {
 	Text,
 	VStack,
 	IconButton,
-	useBreakpointValue
+	useBreakpointValue,
+	Box
 } from "@chakra-ui/react";
 import Link from "next/link";
 import { HamburgerIcon } from '@chakra-ui/icons';
@@ -37,30 +38,33 @@ const MobileHeader = ({ pages }: { pages: PageType[] }) => {
 				isOpen={isOpen}
 				onClose={onClose}
 			>
-				<VStack alignItems="left">
-					{pages.map((obj, i) => (
-						<Text
-							key={obj._id}
-							fontSize='1.3rem'
-							sx={{
-								':focus': {
-									color: 'white !important'
-								},
-								'a:hover': {
-									color: 'lightgray'
-								}
-							}}
-						>
-							<Link
-								key={i}
-								href={obj.folderHref ?? ''}
-								passHref
-								onClick={onClose}
+				<VStack 
+					alignItems="left"
+					width='100%'
+				>
+					{pages.map((obj, i) => {
+						if (obj.folderHref !== '/') {
+							return <Box
+								borderBottom='solid white'
+								width='100%'
+								pb='.4rem'
 							>
-								{obj.title}
-							</Link>
-						</Text>
-					))}
+								<Text
+									key={obj._id}
+									fontSize='1rem'
+								>
+									<Link
+										key={i}
+										href={obj.folderHref ?? ''}
+										passHref
+										onClick={onClose}
+									>
+										{obj.title}
+									</Link>
+								</Text>
+							</Box>
+						}
+					})}
 				</VStack>
 			</MobileHeaderDrawers>
 		</Flex>

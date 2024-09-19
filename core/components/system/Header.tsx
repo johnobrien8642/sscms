@@ -137,12 +137,11 @@ const Header = ({ pages, settings }: { pages: PageType[], settings: any; }) => {
 							if (obj.folderHref !== '/') {
 								return <Box
 										key={obj._id}
-										mt='.2rem'
-										ml='1rem'
 									>
 										<Text
 											key={obj._id}
-											fontSize={router.asPath === obj.folderHref ? '1.3rem !important' : '1.2rem'}
+											fontSize='1rem'
+											fontWeight='bold'
 											whiteSpace='nowrap'
 											sx={{
 												'a:hover': {
