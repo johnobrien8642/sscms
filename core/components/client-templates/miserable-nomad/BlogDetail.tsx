@@ -23,7 +23,6 @@ const BlogDetail = ({ page }: { page: BlogPostType }) => {
 				})
 				const data = await res.json();
 				const { prev, next } = data;
-				console.log(prev, next)
 				setPrevAndNext({ prev, next });
 		}
 	}, []);
