@@ -36,7 +36,6 @@ const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
 		const pPage = JSON.parse(page);
 		const pHeaderPages: PageType[] = JSON.parse(headerPages);
 		const pSettings: SettingsType = JSON.parse(settings);
-		console.log(pPage)
 		return (
 			<>
 				<Head>
