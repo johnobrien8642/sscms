@@ -4,13 +4,14 @@ import {
 } from '@chakra-ui/react';
 import { BasePropsType } from '@core/components/types/prop_types';
 import Image from 'next/image';
+import ScrollAnimation from 'react-animate-on-scroll';
 
 const SinglePhotoHighlight = ({ template }: BasePropsType) => {
 	const image = template.assetsIds[0];
 
 	return <Flex
 		flexDir='column'
-		width='90%'
+		width={{ base: '100%', md: '90%', lg: '65%' }}
 		m='5rem auto'
 	>
 		<Image

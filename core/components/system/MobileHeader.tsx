@@ -52,12 +52,12 @@ const MobileHeader = ({ pages }: { pages: PageType[] }) => {
 					{pages.map((obj, i) => {
 						if (obj.folderHref !== '/') {
 							return <Box
+								key={obj._id}
 								borderBottom='solid white'
 								width='100%'
 								pb='.4rem'
 							>
 								<Text
-									key={obj._id}
 									fontSize='1rem'
 								>
 									<Link

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useRef } from 'react'
 import {
 	Button,
 	Modal,
@@ -45,6 +45,7 @@ const FormPage = ({
 		formCache,
 		setFormCache
 	} = useManagePageForm();
+	const modalRef = useRef(null);
 	const [items, setItems] = useState<AllDocUnionType[]>([]);
 	const [totalItems, setTotalItems] = useState(0);
 	const [skip, setSkip] = useState(1);
@@ -173,8 +174,10 @@ const FormPage = ({
 				}}
 				size='full'
 				scrollBehavior='inside'
+				autoFocus={false}
+				trapFocus={false}
 			>
-				<ModalOverlay />
+				<ModalOverlay ref={modalRef} />
 				<ModalContent
 					margin='0'
 					rounded='none'
@@ -248,6 +251,11 @@ const FormPage = ({
 					</ModalFooter>
 				</ModalContent>
 			</Modal>
+			<style jsx global>{`
+				.ck.ck-balloon-panel {
+					z-index: 1400 !important;
+				}
+	  		`}</style>
 		</>
 	)
 }

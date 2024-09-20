@@ -33,18 +33,22 @@ const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
 	if (!page) {
 		return <></>
 	} else {
-		const pPage: PageType | BlogPostType = JSON.parse(page);
+		const pPage = JSON.parse(page);
 		const pHeaderPages: PageType[] = JSON.parse(headerPages);
 		const pSettings: SettingsType = JSON.parse(settings);
+		console.log(pPage)
 		return (
 			<>
 				<Head>
-					<title>{(pPage.typeName === 'Page' && pPage?.meta?.metaTitle) || pPage?.title}</title>
 					{
-						pPage.typeName === 'Page' && 
+						(pPage?.meta?.metaTitle || pPage?.title) && 
+							<title>{(pPage?.meta?.metaTitle) ?? pPage?.title}</title>
+					}
+					{
+						(pPage?.meta?.metaDescription || pPage?.description) &&
 							<meta
 								name="description"
-								content={pPage?.meta?.metaDescription as string || pPage?.description as string}
+								content={pPage?.meta?.metaDescription as string ?? pPage?.description as string}
 							/>
 					}
 					<link rel="canonical" href='' />
@@ -87,6 +91,9 @@ const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
 						height: 100vh;
 						background: ${pSettings?.siteBgGradient};
 						background-image: ${pSettings?.siteBodyBgImage};
+					}
+					a {
+						text-decoration: underline;
 					}
 	  			`}</style>
 			</>
