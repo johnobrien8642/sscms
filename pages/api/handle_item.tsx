@@ -46,7 +46,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			itemExistsAlready = await Page.findOne({ folderHref: data.folderHref });
 			formOrderDoc = await Page.find({}).sort('-formOrder').limit(1).select('formOrder');
 			data.formOrder = formOrderDoc.length ? formOrderDoc[0].formOrder + 1 : 0;
-			// console.log(data)
 			if (itemExistsAlready) {
 				return res.status(400).json({ success: false, errorMessage: `Page with folderHref: ${data.folderHref} already exists` });
 			}
@@ -88,22 +87,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 			parentItem = await models[formTitleRef].findById(data.previous);
 			if (parentItem && parentItem.schemaName === formTitleRef && formTitleRef === 'Page') {
 				data.folderHref = (parentItem.folderHref === '/' ? '' : parentItem.folderHref) + data.folderHref;
-			}
-			try {
-				await res.revalidate(folderHref);
-			} catch (err) {
-			}
-			if (revalidateAll) {
-				const allPages = 
-					await models['Page']
-						.find({}).select('folderHref');
-				const allBlogPosts = 
-					await models['BlogPost']
-						.find({}).select('folderHref');
-				const allItems = [...allPages, ...allBlogPosts];
-				for (let i = 0; i < allItems.length; i++) {
-					await res.revalidate(allItems[i].folderHref);
-				}
 			}
 			const draftFor = await models[formTitleRef].findOne({ _id: draftForId });
 			const modelPaths = models[data.schemaName as string].schema.paths;
