@@ -10,7 +10,7 @@ const SinglePhotoHighlight = ({ template }: BasePropsType) => {
 
 	return <Flex
 		flexDir='column'
-		width='90%'
+		width={{ base: '100%', md: '90%', lg: '65%' }}
 		m='5rem auto'
 	>
 		<Image
