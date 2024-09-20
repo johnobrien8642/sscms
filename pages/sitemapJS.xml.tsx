@@ -29,8 +29,18 @@ function SiteMap() {
 export async function getServerSideProps({ res }: { res: NextApiResponse }) {
 	await connectDb();
 	// We make an API call to gather the URLs for our site
-	const data1 = await Page.find({});
-	const data2 = await BlogPost.find({});
+	const data1 = 
+		await Page
+			.find({
+				isPublished: true
+			})
+			.select('folderHref');
+	const data2 = 
+		await BlogPost
+			.find({
+				isPublished: true
+			})
+			.select('folderHref');
 
 	// We generate the XML sitemap with the posts data
 	const sitemap = generateSiteMap([...data1, ...data2] as PageType[]);
