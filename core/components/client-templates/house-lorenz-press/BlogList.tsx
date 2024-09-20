@@ -46,7 +46,7 @@ const BlogList = ({ template }: BasePropsType) => {
 		width={{ base: '95%', md: '60%' }}
 		position='relative'
 	>
-		<Input 
+		{/* <Input 
 			placeholder='Search blogs...'
 			onInput={e => {
 				setSearch(e.currentTarget.value);
@@ -55,7 +55,7 @@ const BlogList = ({ template }: BasePropsType) => {
 			mb='1rem'
 			position='relative'
 			right={{ base: '0', md: '50%' }}
-		/>
+		/> */}
 		<Flex
 			flexDir='column'
 			height='100%'
@@ -97,7 +97,7 @@ const BlogList = ({ template }: BasePropsType) => {
 				</ScrollAnimation>
 			})}
 		</Flex>
-		<SubscribeForm />
+		{/* <SubscribeForm /> */}
 		<Pagination
 			current={currentPage}
 			totalItems={blogPostsCount}

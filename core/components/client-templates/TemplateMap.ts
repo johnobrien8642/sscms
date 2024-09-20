@@ -49,6 +49,7 @@ import HLP_SideBySideHighlight from './house-lorenz-press/SideBySideHighlight';
 import HLP_SinglePhotoHighlight from './house-lorenz-press/SinglePhotoHighlight';
 import HLP_BlogDetail from "./house-lorenz-press/BlogDetail";
 import HLP_ContactCard from "./house-lorenz-press/ContactCard";
+import HLP_SubscribeForm from "./house-lorenz-press/SubscribeForm";
 // blue-grey-card-theory
 import BGCT_PhotoList from "./blue-grey-card-theory/PhotoList";
 import BGCT_VideoPlayer from "./blue-grey-card-theory/VideoPlayer";
@@ -129,7 +130,8 @@ const TemplateMap: { [key: string]: { [key: string]: any} } = {
 		'SideBySideTextBlock': HLP_SideBySideTextBlock,
 		'SideBySideHighlight': HLP_SideBySideHighlight,
 		'BlogDetail': HLP_BlogDetail,
-		'ContactCard': HLP_ContactCard
+		'ContactCard': HLP_ContactCard,
+		'SubscribeForm': HLP_SubscribeForm,
 	},
 	'blue-grey-card-theory': {
 		'PhotoList': BGCT_PhotoList,
