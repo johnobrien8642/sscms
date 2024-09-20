@@ -1,10 +1,11 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import Header from '@core/components/system/Header';
 import Templates from '@core/components/system/Templates';
 import connectDb from '@db/lib/mongodb';
-import { Tag } from '@chakra-ui/react';
+import { Center, Spinner, Tag } from '@chakra-ui/react';
 import Page, { PageType } from '@db/models/Page';
 import BlogPost, { BlogPostType } from '@db/models/BlogPost';
 import { GetStaticProps, NextPage } from 'next';
@@ -20,7 +21,15 @@ export type SlugPropsType = {
 }
 
 const Home: NextPage<SlugPropsType> = ({ page, headerPages, settings }) => {
+	const router = useRouter();
 	const BlogDetail = TemplateMap[process.env.NEXT_PUBLIC_SITE_FOLDER as string]['BlogDetail'];
+	if (router.isFallback) {
+		return <Center
+			overflow='hidden'
+		>
+			<Spinner mt='10rem' boxSize={24} thickness='.4rem' />
+		</Center>
+	}
 	if (!page) {
 		return <></>
 	} else {
