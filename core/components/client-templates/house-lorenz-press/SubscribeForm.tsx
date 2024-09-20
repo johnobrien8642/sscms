@@ -8,7 +8,7 @@ const HLPSubscribeForm = ({ template }: BasePropsType) => {
 	return <Flex
 		flexDir='column'
 		justifyContent='center'
-		my='1rem'
+		my='2rem'
 	>
 		<Divider w='50%' m='auto' mb='1rem' />
 		{
