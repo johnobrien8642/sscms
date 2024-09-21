@@ -43,6 +43,18 @@ const optionsObj: { [key: string]: OptionsType } = {
 		filterType: true,
 		xlWindow: true
 	},
+	prevBlog: {
+		formTitle: 'Previous Blog Post',
+		singleChoice: true,
+		disallowCreate: true,
+		filterType: false
+	},
+	nextBlog: {
+		formTitle: 'Next Blog Post',
+		singleChoice: true,
+		disallowCreate: true,
+		filterType: false
+	},
 	isNestedChild: {
 		hide: true,
 		internal: true,
@@ -141,6 +153,24 @@ const BlogPostSchema = new Schema({
 		],
 		...optionsObj.templatesIds
 	},
+	prevBlog: {
+		type: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'BlogPost'
+			}
+		],
+		...optionsObj.prevBlog
+	},
+	nextBlog: {
+		type: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: 'BlogPost'
+			}
+		],
+		...optionsObj.nextBlog
+	},
 	isNestedChild: {
 		type: Boolean,
 		...optionsObj.isNestedChild
@@ -196,8 +226,10 @@ BlogPostSchema
 export type BlogPostSubDocsType = {
 	templatesIds: TemplatesType[];
 	mainImage: AssetsType[];
+	prevBlog: BlogPostType[];
+	nextBlog: BlogPostType[];
 }
-export type BlogPostNoSubdocsType = Omit<InferSchemaType<typeof BlogPostSchema>, 'templatesIds'>;
+export type BlogPostNoSubdocsType = Omit<InferSchemaType<typeof BlogPostSchema>, 'templatesIds' | 'mainImage' | 'prevBlog' | 'nextBlog'>;
 // export type BlogPostType = HydratedDocument<BlogPostNoSubdocsType & BlogPostSubDocsType>;
 export type BlogPostType = BlogPostNoSubdocsType & BlogPostSubDocsType & { _id: string; typeName: 'BlogPost' };
 export type HydratedBlogPostType = HydratedDocument<BlogPostType>;

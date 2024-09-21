@@ -7,15 +7,15 @@ import TemplateMap from '@core/components/client-templates/TemplateMap';
 const Schema = mongoose.Schema;
 
 const optionsObj: { [key: string]: OptionsType } = {
-	title: {
-		templates: {}
-	},
 	type: {
 		required: true,
 		enum: Object.keys(TemplateMap[process.env.NEXT_PUBLIC_SITE_FOLDER as string]),
 		formTitle: 'Template Type',
 		select: true,
 		enumKey: 'templateOptions'
+	},
+	title: {
+		templates: {}
 	},
 	showMobile: {
 		default: true,
@@ -33,6 +33,13 @@ const optionsObj: { [key: string]: OptionsType } = {
 		filterType: true,
 		cloneForDraft: false,
 		xlWindow: true,
+		ref: 'Assets'
+	},
+	backgroundImage: {
+		formTitle: 'Template Background Image',
+		filterType: true,
+		cloneForDraft: false,
+		singleChoice: true,
 		ref: 'Assets'
 	},
 	description: {
@@ -112,13 +119,13 @@ const optionsObj: { [key: string]: OptionsType } = {
 }
 
 const TemplatesSchema = new Schema({
-	title: {
-		type: String,
-		...optionsObj.title
-	},
 	type: {
 		type: String,
 		...optionsObj.type
+	},
+	title: {
+		type: String,
+		...optionsObj.title
 	},
 	showMobile: {
 		type: Boolean,
@@ -141,6 +148,15 @@ const TemplatesSchema = new Schema({
 			}
 		],
 		...optionsObj.assetsIds
+	},
+	backgroundImage: {
+		type: [
+			{
+				type: mongoose.Schema.Types.ObjectId,
+				ref: optionsObj.backgroundImage.ref
+			}
+		],
+		...optionsObj.backgroundImage
 	},
 	description: {
 		type: String,
@@ -221,11 +237,12 @@ const TemplatesSchema = new Schema({
 export type TemplatesSubdocsType = {
 	textIds: TextType[];
 	assetsIds: AssetsType[];
+	backgroundImage: AssetsType[];
 	videoId: AssetsType[];
 	linksIds: AssetsType[];
 	pagesIds: PageType[];
 }
-export type TemplatesTypeNoSubDoc = Omit<InferSchemaType<typeof TemplatesSchema>, 'assetsIds' | 'linksIds' | 'videoId' | 'pagesIds' | 'textIds'>;
+export type TemplatesTypeNoSubDoc = Omit<InferSchemaType<typeof TemplatesSchema>, 'assetsIds' | 'backgroundImage' | 'linksIds' | 'videoId' | 'pagesIds' | 'textIds'>;
 // export type TemplatesType = HydratedDocument<TemplatesTypeNoSubDoc & TemplatesSubdocsType>;
 export type TemplatesType = TemplatesTypeNoSubDoc & TemplatesSubdocsType & { _id: string; typeName: 'Templates' };
 export type HydratedTemplatesType = HydratedDocument<TemplatesType>;

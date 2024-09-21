@@ -34,7 +34,8 @@ export enum TextAlignOptionsEnum {
 
 export enum BlogPostTopicOptionsEnum {
 	Travel = 'Travel',
-	Tech = 'Tech'
+	Tech = 'Tech',
+	BookReview = 'Book Review'
 }
 
 export type SubdocumentType = {
@@ -93,6 +94,8 @@ export type OptionsType = {
 	templates?: { [key: string]: number; };
 	// For limiting subdocument choices to just a single document in the form
 	singleChoice?: boolean;
+	// For disallowing create new in ListField
+	disallowCreate?: boolean;
 	// For showing filter types for ListField if needed/available
 	filterType?: boolean;
 	// Only allows updating the field for the active draft
