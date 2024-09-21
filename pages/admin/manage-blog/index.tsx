@@ -8,7 +8,9 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@pages/api/auth/[...nextauth]';
 import { Box, Flex, Input, Select, Switch } from '@chakra-ui/react';
 import { blogPostTopicOptionsEnum } from '@db/models/model-types';
-import { debounce } from 'lodash';
+import { cloneDeep, debounce } from 'lodash';
+import useLocalStorage from "use-local-storage";
+import { DebounceInput } from 'react-debounce-input';
 
 const ManagePages: NextPage<{}> = () => {
 	const [topLevelModal, setTopLevelModal] = useState(false);
@@ -17,21 +19,26 @@ const ManagePages: NextPage<{}> = () => {
 	});
 	const [data, setData] = useState(dataInitialValue);
 	const [formCache, setFormCache] = useState<any>({});
-	const [blogPostTopic, setBlogPostTopic] = useState<string>(blogPostTopicOptionsEnum[0]);
 	const [additionalParams, setAdditionalParams] = useState<URLSearchParams>();
-	const [search, setSearch] = useState('');
+	const [persistBlog, setPersistBlog] = 
+		useLocalStorage(
+			`${process.env.NEXT_PUBLIC_S3_BUCKET_NAME}-blog-setting`, 
+			{ 
+				topic: blogPostTopicOptionsEnum[0] as string,
+				searchStr: ''
+			}
+		);
+	const [blogPostTopic, setBlogPostTopic] = useState<string>('');
 	const [stopDrag, setStopDrag] = useState(false);
-
 	useEffect(() => {
 		const paramsObj: any = {};
-		paramsObj['topic'] = blogPostTopic;
-		if (search) {
-			paramsObj['search'] = search;
+		paramsObj['topic'] = persistBlog.topic;
+		if (persistBlog.searchStr) {
+			paramsObj['search'] = persistBlog.searchStr;
 		}
 		const params = new URLSearchParams(paramsObj);
 		setAdditionalParams(params);
-	}, [blogPostTopic, search]);
-
+	}, [persistBlog]);
 	return (
 		<>
 			<Head>
@@ -57,9 +64,16 @@ const ManagePages: NextPage<{}> = () => {
 					ml='1rem'
 				>
 					<Select
-						onChange={(e: Event | ChangeEvent | FormEvent<HTMLInputElement>) =>
-							setBlogPostTopic((e.target as HTMLInputElement).value)}
-						value={blogPostTopic}
+						onChange={(e: Event | ChangeEvent | FormEvent<HTMLInputElement>) => {
+							setPersistBlog(prev => {
+								const newData = cloneDeep(prev);
+								if (newData?.topic) {
+									newData.topic = (e.target as HTMLInputElement).value;
+								}
+								return newData;
+							})
+						}}
+						value={persistBlog.topic}
 						width='fit-content'
 					>
 						{
@@ -68,12 +82,24 @@ const ManagePages: NextPage<{}> = () => {
 							})
 						}
 					</Select>
-					<Input
-						value={search}
+					<DebounceInput
+						minLength={2}
+						debounceTimeout={1000}
+						style={{
+							padding: '.2rem',
+							width: '35%'
+						}}
+						value={persistBlog.searchStr}
 						width='35%'
 						placeholder={`Search Blog Posts`}
-						onInput={e => {
-							setSearch((e.target as HTMLInputElement).value)
+						onChange={e => {
+							setPersistBlog(prev => {
+								const newData = cloneDeep(prev);
+								if (newData?.searchStr !== undefined) {
+									newData.searchStr = (e.target as HTMLInputElement).value;
+								}
+								return newData;
+							})
 						}}
 					/>
 				</Flex>
