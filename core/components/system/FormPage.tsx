@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useCallback } from 'react'
 import {
 	Button,
 	Modal,
@@ -9,7 +9,8 @@ import {
 	ModalBody,
 	ModalFooter,
 	Flex,
-	Text
+	Text,
+	Heading
 } from '@chakra-ui/react'
 import Form from './Form.tsx';
 import { dataInitialValue, useManagePageForm } from '@core/contexts/useManagePageForm.tsx';
@@ -96,7 +97,11 @@ const FormPage = ({
 			};
 		}
 	}, [items]);
-
+	const resolveHeading = useCallback(() => {
+		let activeItem = formCache[formCache?.active];
+		let previousItem = formCache[activeItem?.previous];
+		return `${activeItem?.update? 'Edit ' : 'Create '}${activeItem?.formTitle}${previousItem ? ` for ${previousItem?.formTitle}` : ''}`
+	}, [formCache]);
 	return (
 		<>
 			<Button
@@ -181,6 +186,14 @@ const FormPage = ({
 					overflow='hidden'
 				>
 					<ModalHeader>
+						{
+							formCache[formCache?.active]?.formTitle && 
+								<Heading
+									minH='55px'
+								>
+									{resolveHeading()}
+								</Heading>
+						}
 						<ModalCloseButton 
 							onClick={async () => {
 								if (

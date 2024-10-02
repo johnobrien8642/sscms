@@ -67,11 +67,6 @@ const Form = ({
 			setFieldArr(Object.entries(schemaPaths));
 		}
 	}, [formCache]);
-	const resolveHeading = useCallback(() => {
-		let activeItem = formCache[formCache?.active];
-		let previousItem = formCache[activeItem?.previous];
-		return `${activeItem?.update? 'Edit ' : 'Create '}${activeItem?.formTitle}${previousItem ? ` for ${previousItem?.formTitle}` : ''}`
-	}, [formCache]);
  	useEffect(() => {
 		if (bypassModal) return;
 		setDraftPreviewKey(draftPreviewKey + 1);
@@ -144,14 +139,6 @@ const Form = ({
 				}
 			}}
 		>
-			{
-				formCache[formCache?.active]?.formTitle && 
-					<Heading
-						minH='55px'
-					>
-						{resolveHeading()}
-					</Heading>
-			}
 			{formCache[formCache?.active]?.activeBeingDrafted && <Text color='green' >Active Draft</Text>}
 			<form
 				id='sscms-form'
