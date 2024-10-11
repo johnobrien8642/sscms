@@ -229,6 +229,7 @@ const ListField = ({
 										/>
 									</Box>
 									<Box
+										id={title + '-' + 'available-items-cont'}
 										outline='black solid .1rem'
 										borderRadius='.2rem'
 										height='220px'
@@ -242,7 +243,8 @@ const ListField = ({
 												setSkip(availableItems.length)
 											}}
 											hasMore={true}
-											loader={<Spinner />}
+											loader={<></>}
+											scrollableTarget={title + '-' + 'available-items-cont'}
 										>
 											{
 												availableItems
